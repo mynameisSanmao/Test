@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>h5拖拽</title>
+		<style>
+			#wrap{
+				position: fixed;
+				top: 0;
+				left:0;
+				right:0;
+				bottom:0;
+				margin: auto;
+				width: 400px;
+				height: 150px;
+				
+			}
+			#box{
+				height: 120px;
+				width: 100%;
+				position: relative;
+				border:1px solid #ccc;
+			}
+			#box>span{
+				position: absolute;
+				top: 0;
+				left:0;
+				right:0;
+				bottom:0;
+				margin: auto;
+				height: 30px;
+				width: 200px;
+				line-height: 30px;
+			}
+			#box>p{
+				position: absolute;
+				bottom:0;
+			}
+			#bin{
+				height: 30px;
+				width: 100%;
+				text-align: center;
+			}
+			img{
+				width: 20px;height: 20px;padding: 0;margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box">
+				<span>可以将文件拖放到这里</span>
+				<p></p>
+			</div>
+			<div id="bin">回收站</div>
+		</div>
+		
+	</body>
+	<script>
+		var oBox=document.getElementById("box");
+		var oSpan=oBox.getElementsByTagName("span")[0];
+		var oP=oBox.getElementsByTagName("p")[0];
+		var oBin=document.getElementById("bin");
+		var aImgs=document.getElementsByTagName("img");
+		var img;
+		oBox.ondragenter=function(ev){
+			ev.preventDefault();
+			oSpan.style.display="none";
+		}
+		oBox.ondragover=function(ev){
+			ev.preventDefault();
+		}
+		oBox.ondrop=function(ev){
+			console.log(ev);
+			console.log(ev.dataTransfer.files);
+			ev.preventDefault();
+			var imgFile=ev.dataTransfer.files;//先获取外部的文件
+			var imgLength=imgFile.length;
+			oP.innerHTML="共有"+imgLength+"个文件";
+			for(var i=0; i<imgLength;i++){
+				if(imgFile[i].type.indexOf("image")!=-1){
+					var imgRead=new FileReader();//新建一个文件读取文件信息
+					console.log('imgRead');
+					console.log(imgRead);
+					imgRead.readAsDataURL(imgFile[i]);//要读取的文件对象
+					imgRead.onload=function(ev){
+						var aImg=new Image();
+						console.log('aImg');
+						console.log(aImg);
+						aImg.src=this.result;
+						oBox.appendChild(aImg);
+						if(aImgs){
+							for(var j=0;j<aImgs.length;j++){
+								aImgs[j].ondragstart=function(ev){
+									console.log('img');
+									console.log(ev);
+									img=ev.target;
+								}
+							}
+						}
+						oBin.ondragover=function(ev){
+							ev.preventDefault();
+						}
+						oBin.ondrop=function(ev){
+							ev.preventDefault();
+							if(img){
+								img.parentNode.removeChild(img)
+							}
+						}
+					}
+					
+				}else{
+
+				}
+				
+			}
+		}
+	</script>
+</html>
