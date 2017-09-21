@@ -1,0 +1,28 @@
+<view>
+  <text>请输入查询内容</text>
+  <input  type="number" bindinput="bindPhoneInput" value="{{phoneNumber}}"/>
+  <button type="primary" bindtap="queryPhoneInfo" disabled="{{disabled}}">查询</button>
+</view>
+<!--查询结果-->
+<view>
+  <view wx:if="{{phoneInfo}}">
+    <text>查询结果为：</text>
+    <!--手机号存在-->
+    <text wx:if="{{phoneInfo.ret===0}}">
+      {{phoneInfo.operator}}{{phoneInfo.province}}{{phoneInfo.city}}
+    </text>
+    <!--手机号不存在-->
+    <text wx:else>
+      {{phoneInfo.msg}}
+    </text>
+  </view>
+</view>
+<!--最近搜索-->
+<view>
+  <text>最近搜索</text>
+  <view>
+    <view wx:for="{{historyList}}" bindtap="selectHistory" data-number="{{item}}">
+      {{item}}
+    </view>
+  </view>
+</view>
