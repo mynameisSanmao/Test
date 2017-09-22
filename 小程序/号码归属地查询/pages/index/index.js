@@ -8,6 +8,7 @@ Page({
   },
   //输入
   bindPhoneInput(event){
+    // console.log(event)    
     this.setData({
       phoneNumber:event.detail.value,
       // phoneInfo:null
@@ -56,11 +57,12 @@ Page({
   },
   // 用户点击记录之后，将其添加到输入框
   selectHistory(event){
+    // console.log(event)
     this.setData({
       phoneNumber:event.currentTarget.dataset.number,
       disabled:false
     });
-     this.clearQueryRst();
+    // this.clearQueryRst();
   },
   /**
    * 清空查询结果
