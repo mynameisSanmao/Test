@@ -1,0 +1,57 @@
+page {
+  background-color: #EFEFF4;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+
+.querySection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 35px;
+}
+
+.help-text {
+  font-size:14pt;
+  color:#888888;
+  margin-left:15px;
+}
+
+.queryInput {
+  width:100%;
+  background-color: #FFFFFF;
+  height: 75px;
+  margin:10px auto;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+
+.queryBtn {
+  margin:15px;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  margin:20px;
+  background-color: #D2D2D2;
+  padding: 13px;
+  color:#FFFFFF;
+  border-radius:20px;
+}
+
+.queryRst {
+  margin:20px;
+}
+
+.record{
+  display:flex;
+  justify-content:space-between;
+}
+.clearHistory{
+  margin-right:15rpx;
+  font-size:14pt;
+  color:#888888;
+
+}

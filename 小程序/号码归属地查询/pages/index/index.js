@@ -8,6 +8,7 @@ Page({
   },
   //输入
   bindPhoneInput(event){
+    // console.log(event)    
     this.setData({
       phoneNumber:event.detail.value,
       // phoneInfo:null
@@ -18,14 +19,23 @@ Page({
   //验证手机是否为11位
   setDisabled(){
     this.setData({
-      disabled:(this.data.phoneNumber && this.data.phoneNumber.toString().lenght===11)?false:true
+      disabled: (this.data.phoneNumber && this.data.phoneNumber.toString().length===11)?false:true
     })
   },
   //查询
   queryPhoneInfo(){
-    app.getPhoneInfo(this.data.phoneNumber,data => this.setData({
-      phoneInfo:data
-    }));
+    var phone = this.data.phoneNumber;
+    if (!/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(phone)){
+      wx.showToast({
+        title: '号码不存在',
+        image: '../../image/warn.png',
+        duration: 1500
+      })
+    }else{
+      app.getPhoneInfo(this.data.phoneNumber, data => this.setData({
+        phoneInfo: data
+      }));
+    }
     this.addQueryHistory(this.data.phoneNumber); // 添加搜索记录
   },
   //将搜索记录添加到缓存
@@ -47,11 +57,12 @@ Page({
   },
   // 用户点击记录之后，将其添加到输入框
   selectHistory(event){
+    // console.log(event)
     this.setData({
       phoneNumber:event.currentTarget.dataset.number,
       disabled:false
     });
-     this.clearQueryRst();
+    // this.clearQueryRst();
   },
   /**
    * 清空查询结果
@@ -60,5 +71,12 @@ Page({
     this.setData({
       phoneInfo: null
     })
+  },
+  //清空搜索记录
+  clearHistory(){
+    this.setData({
+      historyList: wx.clearStorageSync('historyList')||[]
+    })
+    
   }
 })
