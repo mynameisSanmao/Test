@@ -26,7 +26,7 @@
 			height: 200px;
 			box-shadow: 0 0 10px #000;
 			/*倒影*/
-			-webkit-box-reflect: below 5px -webkit-linear-gradient(top,rgba(0,0,0,0) 40%,rgba(0,0,0,0.5) 100%);
+			-webkit-box-reflect: below 5px -webkit-linear-gradient(top,rgba(0,0,0,0) 40% , rgba(0,0,0,0.5) 100%);
 			border-radius: 5px;
 			transform: rotateY(0deg) translateZ(0px);
 			/*transition: all 1s;*/
@@ -65,10 +65,10 @@
 		var Deg= 360 / len; 
 		
 		//图片初始动画
-		for(var i= 0;i<len;i++){
-			aImg[i].style.transform="rotateY("+i*Deg+"deg) translateZ(350px)";
-			aImg[i].style.transition="1s" +(len-1-i)*0.1 + "s";
-		}
+//		for(var i= 0;i<len;i++){
+//			aImg[i].style.transform="rotateY("+i*Deg+"deg) translateZ(350px)";
+//			aImg[i].style.transition="1s " +(len-1-i)*0.1 + "s";
+//		}
 	</script>
 </body>
 </html>
