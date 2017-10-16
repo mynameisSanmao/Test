@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: black;
+				background: url(images/d1.png)no-repeat top center;
+			}
+			#qq{
+				width: 900px;
+				height: 160px;
+				margin: 340px auto;
+				position: relative;
+			}
+			#qq .btn{
+				width: 24px;
+				height: 24px;
+				position: absolute;
+				top: 50%;
+    			margin-top: auto;
+			    border-radius: 50%;
+			    cursor: pointer;
+			    border:2px solid #fff;
+			    z-index: 2;
+			}
+			.prev{
+				background: url(images/ll.png)no-repeat;
+				left: 5px;
+			}
+			.next{
+				background: url(images/rr.png) no-repeat;
+				right: 5px;
+			}
+			.con{
+				width: 820px;
+				height: 160px;
+				margin: auto;
+				position: relative;
+				overflow: hidden;
+			}
+			.scroll{
+				width: 100%;
+				height: 160px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.scroll img{
+				float: left;
+				margin: 25px 15px;
+			}
+		</style>
+		<script src="../lib/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="qq">
+			<div class="btn prev"></div>
+			<div class="btn next"></div>
+			<div class="con">
+				<div class="scroll">
+					<img src="images/x1.png"/>
+					<img src="images/x2.png"/>
+					<img src="images/x3.png"/>
+					<img src="images/x4.png"/>
+					<img src="images/x5.png"/>
+					<img src="images/x6.png"/>
+					<img src="images/x7.png"/>
+					<img src="images/x8.png"/>
+					<img src="images/x9.png"/>
+					<img src="images/x10.png"/>
+					<img src="images/x11.png"/>
+					<img src="images/x12.png"/>
+					
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var img = document.getElementsByTagName("img");
+			var scroll = document.getElementsByClassName("scroll")[0];
+			var next = document.getElementsByClassName('next')
+			var length=img.length;
+			scroll.style.width=length*175 + 'px';
+			for(var i=0;i<length;i++){
+				img[i].i=i;
+				next.onclick=function(){
+					
+				}
+				img[i].onclick=function(){
+					scroll.style.left=this.i * 190 + 'px'
+				}
+				
+			}
+		
+		</script>
+	</body>
+</html>
