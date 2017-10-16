@@ -21,6 +21,40 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+var appData = require('../data.json');
+var seller = appData.seller;
+var goods = appData.goods;
+var ratings = appData.ratings;
+
+var apiRouter = express.Router();
+
+//自定义seller接口
+apiRouter.get('/seller',function(req,res){
+  res.json({
+    error:0,
+    data:seller
+  });
+});
+
+//自定义goods接口
+apiRouter.get('/goods',function(req,res){
+  res.json({
+    error:0,
+    data:goods
+  });
+});
+
+//自定义rating接口
+apiRouter.get('/rating',function(req,res){
+  res.json({
+    error:0,
+    data:ratings
+  });
+});
+
+app.use('/api',apiRouter);
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
