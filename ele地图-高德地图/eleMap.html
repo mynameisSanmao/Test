@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>elemap</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				background-color: #1e89e0;
+				tab-size: 12px;
+				color: #666;
+			}
+			
+			.top {
+				width: 100%;
+				height: 40px;
+				margin: 30px 0;
+			}
+			
+			.t-header {
+				width: 1000px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.t-logo {
+				float: left;
+				margin-top: 10px;
+			}
+			
+			.t-desc {
+				float: right;
+				line-height: 40px;
+				font-size: 16px;
+				color: #fff;
+			}
+			
+			.content {
+				width: 1000px;
+				height: 600px;
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			.c-title {
+				height: 60px;
+				line-height: 60px;
+				text-align: center;
+				font-size: 22px;
+				color: #fff;
+				font-weight: 300;
+				background: #f90;
+			}
+			
+			.c-con {
+				width: 1000px;
+				height: 540px;
+			}
+			
+			.search {
+				width: 610px;
+				height: 56px;
+				background: #6cf;
+				box-shadow: 1px 2px 10px -2px #000;
+				position: absolute;
+				top: 100px;
+				left: 50%;
+				margin-left: -305px;
+			}
+			
+			.s-text {
+				width: 490px;
+				height: 56px;
+				border: none;
+				outline: none;
+				padding-left: 10px;
+			}
+			
+			.s-button {
+				width: 110px;
+				height: 56px;
+				border: 0;
+				outline: none;
+				background: #f30;
+				color: #fff;
+				text-align: center;
+				line-height: 56px;
+				cursor: pointer;
+			}
+			
+			.s-button:hover {
+				background: #cc2800;
+			}
+			.amap-logo,.amap-copyright{
+				display: none !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="top">
+			<div class="t-header">
+				<div class="t-logo">
+					<a href="##">
+						<img src="image/map-logo.png" width="220" height="23" alt="logo" />
+					</a>
+				</div>
+				<div class="t-desc">LBS移动点餐系统</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="c-title">
+				点外卖上饿了么
+			</div>
+			<div class="c-con" id="c-map">
+
+			</div>
+			<div class="search">
+				<input type="text" class="s-text" placeholder="请输入地址" id="search"/><input type="button" value="搜索" class="s-button" />
+			</div>
+		</div>
+
+		<!--引入高德地图api-->
+		<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=ee64d52660656eb0f7a0dace38cd1a5f&plugin=AMap.Autocomplete,AMap.PlaceSearch"></script>
+		<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+		<script type="text/javascript">
+			//地图加载
+			var map = new AMap.Map("c-map", {
+				resizeEnable: true
+			});
+			//输入提示
+			var autoOptions = {
+				input: "search"
+			};
+			var auto = new AMap.Autocomplete(autoOptions);
+			var placeSearch = new AMap.PlaceSearch({
+				map: map
+			}); //构造地点查询类
+			AMap.event.addListener(auto, "select", select); //注册监听，当选中某条记录时会触发
+			function select(e) {
+				placeSearch.setCity(e.poi.adcode);
+				placeSearch.search(e.poi.name); //关键字查询查询
+			}
+		</script>
+	</body>
+
+</html>

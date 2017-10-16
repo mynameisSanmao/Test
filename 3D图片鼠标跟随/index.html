@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>3D图片鼠标跟随</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				background: #222;
+			}
+			
+			#wrap {
+				position: relative;
+				width: 120px;
+				height: 180px;
+				margin: auto;
+				transform-style: preserve-3d;
+				/*perspective: 1000px;*/
+				transform:perspective(800px) rotateX(0deg) rotateY(0deg);
+			}
+			
+			#wrap img {
+				position: absolute;
+				width: 133px;
+				height: 200px;
+				box-shadow: 0 0 10px #000;
+				/*倒影*/
+				-webkit-box-reflect: below 5px -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 100%);
+				border-radius: 5px;
+				transform: rotateY(10deg) translateZ(0px);
+			}
+			#wrap p{
+				position: absolute;
+				left:50%;
+				top: 112%;
+				margin-top: -600px;
+				margin-left: -600px;
+				width: 1200px;
+				height: 1200px;
+				border-radius: 50%;
+				background: -webkit-radial-gradient(center center,600px 600px,rgba(255,255,255,0.2),rgba(0,0,0,0));
+				transform: rotateX(90deg);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<img src="image/1.jpg" />
+			<img src="image/2.jpg" />
+			<img src="image/3.jpg" />
+			<img src="image/4.jpg" />
+			<img src="image/5.jpg" />
+			<img src="image/6.jpg" />
+			<img src="image/7.jpg" />
+			<img src="image/8.jpg" />
+			<img src="image/9.jpg" />
+			<img src="image/10.jpg" />
+			<img src="image/11.jpg" />
+			<p></p>
+		</div>
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var aImg = oWrap.getElementsByTagName('img');
+
+			/*居中显示*/
+			function mTop() {
+				var H = document.documentElement.clientHeight || document.body.clientHeight;
+				oWrap.style.marginTop = H / 2 - 180 + 'px';
+			}
+			mTop();
+			window.onresize = () => {
+				mTop();
+			}
+			var len = aImg.length;
+			//每一张图片所占的角度
+			var Deg = 360 / len;
+
+			//图片初始动画
+			for(var i = 0; i < len; i++) {
+				aImg[i].style.transform = "rotateY(" + i * Deg + "deg) translateZ(350px)";
+				aImg[i].style.transition = "1s " + (len - 1 - i) * 0.1 + "s";
+				//防止图片拖拽
+				aImg[i].onmousedown = function(e) {
+					e.preventDefault()
+				};
+			}
+			var lastX,lastY,nowX,nowY,minX,minY,roX=0,roY=0,timer ;
+			document.onmousedown=function(e){
+				clearInterval(timer);
+				var e=e||window.event;
+				e.preventDefault()
+				//点击是鼠标的坐标
+				lastX = e.clientX;
+				lastY = e.clientY;
+				this.onmousemove=function(ev){
+					var ev = ev || window.event;
+					//移动中鼠标的坐标
+					nowX = ev.clientX;
+					nowY = ev.clientY;
+					//计算鼠标移动坐标差值
+					minX = nowX-lastX;
+					minY = nowY-lastY;
+					
+					roY += minX * 0.2;
+					roX -= minY * 0.1;
+					
+					//图片容器跟随鼠标移动
+					oWrap.style.transform="perspective(800px) rotateX("+roX+"deg) rotateY("+roY+"deg)";
+					lastX=nowX;
+					lastY=nowY;
+				}
+				this.onmouseup=function(){
+					this.onmousemove=null;
+					this.onmouseup=null;
+					timer=setInterval(function(){
+						minX*=0.95;
+						minY*=0.95;
+						roY += minX * 0.2;
+						roX -= minY * 0.1;
+						oWrap.style.transform="perspective(800px) rotateX("+roX+"deg) rotateY("+roY+"deg)";
+						if(Math.abs(minX)<0.1&&Math.abs(minY)<0.1){
+							clearInterval(timer);
+						}
+					},1000/60)
+				}
+			}
+		</script>
+	</body>
+
+</html>

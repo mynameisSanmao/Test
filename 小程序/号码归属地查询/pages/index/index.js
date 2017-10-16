@@ -29,7 +29,7 @@ Page({
       wx.showToast({
         title: '号码不存在',
         image: '../../image/warn.png',
-        duration: 1500
+        duration: 2000
       })
     }else{
       app.getPhoneInfo(this.data.phoneNumber, data => this.setData({
@@ -75,8 +75,8 @@ Page({
   //清空搜索记录
   clearHistory(){
     this.setData({
-      historyList: wx.clearStorageSync('historyList')||[]
+      historyList: wx.clearStorageSync('historyList')||[],
+      phoneNumber:null
     })
-    
   }
 })
