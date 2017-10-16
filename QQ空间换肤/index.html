@@ -18,7 +18,7 @@
 				margin: 340px auto;
 				position: relative;
 			}
-			#qq .btn{
+			.btn{
 				width: 24px;
 				height: 24px;
 				position: absolute;
@@ -45,22 +45,31 @@
 				overflow: hidden;
 			}
 			.scroll{
-				width: 100%;
+				/* width: 100%; */
 				height: 160px;
 				position: absolute;
 				top: 0;
 				left: 0;
+				background: pink;
+				-webkit-transition: all 1s;
+				   -moz-transition: all 1s;
+				    -ms-transition: all 1s;
+				     -o-transition: all 1s;
+				        transition: all 1s;
 			}
 			.scroll img{
 				float: left;
 				margin: 25px 15px;
+			}
+			.disable{
+				cursor: no-drop;
 			}
 		</style>
 		<script src="../lib/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
 		<div id="qq">
-			<div class="btn prev"></div>
+			<div class="btn prev disable"></div>
 			<div class="btn next"></div>
 			<div class="con">
 				<div class="scroll">
@@ -83,20 +92,72 @@
 		<script type="text/javascript">
 			var img = document.getElementsByTagName("img");
 			var scroll = document.getElementsByClassName("scroll")[0];
-			var next = document.getElementsByClassName('next')
+			var next = document.getElementsByClassName('next')[0];
+			var prev = document.getElementsByClassName('prev')[0];
 			var length=img.length;
-			scroll.style.width=length*175 + 'px';
+			var eq=1;
+			scroll.style.width=(length+2)*175 +10+ 'px';
 			for(var i=0;i<length;i++){
 				img[i].i=i;
-				next.onclick=function(){
-					
-				}
+				
 				img[i].onclick=function(){
-					scroll.style.left=this.i * 190 + 'px'
+					// scroll.style.left=this.i * 190 + 'px'
 				}
 				
 			}
-		
+			/*下一步*/
+			next.onclick=function(){
+				prev.classList.remove("disable");
+
+				scroll.style.left=-(eq * 205) + 'px';
+				eq++;
+				if(eq==9){
+					next.onclick=null;
+					next.classList.add("disable");
+				}
+			}
+
+			/*上一步*/
+			prev.onclick=function(){
+				console.log(eq)
+				console.log('////////////////')
+				if(eq!=1){
+					eq--;
+					console.log(eq)
+					prev.classList.remove("disable");
+					if(eq==1){
+						scroll.style.left=0 + 'px';
+					}else{
+						scroll.style.left=-(eq-1)*205 +'px'
+					}
+					
+				}else{
+					prev.classList.add("disable");
+					prev.onclick=null;
+				}
+			}
+
+			function hasClass(elem, cls) {
+			  cls = cls || '';
+			  if (cls.replace(/\s/g, '').length == 0) return false; //当cls没有参数时，返回false
+			  return new RegExp(' ' + cls + ' ').test(' ' + elem.className + ' ');
+			}
+			 
+			function addClass(ele, cls) {
+			  if (!hasClass(elem, cls)) {
+			    ele.className = ele.className == '' ? cls : ele.className + ' ' + cls;
+			  }
+			}
+			 
+			function removeClass(ele, cls) {
+			  if (hasClass(elem, cls)) {
+			    var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, '') + ' ';
+			    while (newClass.indexOf(' ' + cls + ' ') >= 0) {
+			      newClass = newClass.replace(' ' + cls + ' ', ' ');
+			    }
+			    elem.className = newClass.replace(/^\s+|\s+$/g, '');
+			  }
+			}
 		</script>
 	</body>
 </html>
