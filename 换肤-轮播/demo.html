@@ -84,7 +84,8 @@
 		<script>
 			/* 滚动轮播图 1）每隔3s滚动一张图片 setInterval() 2）鼠标移入时清除定时器 clearInterval() 3）鼠标移出时，重新开始定时器 setInterval() 4）实现滚动效果 setInterval() 5）生成页码 根据图片数量生成页码 6）点击页码切换相应图片 onclick 7）点击上一张/下一张按钮 onclick */
 			window.onload = function() { // 获取页面元素 
-				var lbt = document.getElementById('lbt'); var ul = lbt.firstElementChild; var page = lbt.getElementsByClassName('page')[0];
+				var lbt = document.getElementById('lbt'); var ul = lbt.firstElementChild;
+				var page = lbt.getElementsByClassName('page')[0];
 
 				// 滚动图片的索引值，初始值为0
 				var index = 0;

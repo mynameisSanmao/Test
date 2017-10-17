@@ -98,11 +98,12 @@
 			var scroll = document.getElementsByClassName("scroll")[0];
 			var next = document.getElementsByClassName('next')[0];
 			var prev = document.getElementsByClassName('prev')[0];
+			var con = document.getElementsByClassName("con")[0];
 			var body = document.getElementsByTagName("body")[0];
-			var length=img.length;
+			var length = img.length;
 			var eq=1;
 			var moveTimer;
-			var timer=setInterval(move(eq),1000);
+			var timer=setInterval(move(),1000);
 			
 //			timer=setInterval(move(eq),1000);
 			scroll.style.width=(length+2)*175 +10+ 'px';
@@ -114,20 +115,26 @@
 				}
 				
 			}
-			
+			over(next);
+			out(next);
 			/*下一步*/
 			next.onclick=function(){
 				console.log('下一步')
+				clearInterval(timer)
+				clearInterval(moveTimer)
 				prev.classList.remove("disable");
 				prev.style.disabled=false;
 				scroll.style.left=-(eq * 205) + 'px';
 				eq++;
 				if(eq==9){
-					next.disabled='true';
-					next.classList.add("disable");
+					// next.disabled='true';
+					// next.classList.add("disable");
+					eq=1;
 				}
+
 			}
-			
+			over(prev);
+			out(prev);
 			/*上一步*/
 			prev.onclick=function(){
 				console.log(eq)
@@ -144,33 +151,44 @@
 					}
 					
 				}else{
-					prev.classList.add("disable");
-					prev.disabled='true';
+					eq=9;
+					// prev.classList.add("disable");
+					// prev.disabled='true';
 				}
 			}
 			
-			function move(i){
-				
+			function move(){
 				moveTimer=setInterval(function(){
-					scroll.style.left=-(i * 205) + 'px';
-					i++;
-					if(i==9){
-						i=0;
-						move(i)
+					scroll.style.left=-(eq * 205) + 'px';
+					eq++;
+					if(eq==9){
+						eq=0;
+						move()
 						clearInterval(moveTimer);
 					}
 					console.log("自动")
 				},1000)
 				
 			}
-//			move(eq);
-
-			scroll.onmouseover=function(){
-				console.log("清楚")
-				clearInterval(timer)
-				clearInterval(moveTimer)
+		
+			over(con);
+			out(con);
+			/*鼠标移出继续轮播*/
+			function out(ele){
+				ele.onmouseout=function(){
+					move(eq)
+				}
 			}
-			
+
+			/*鼠标移入停止轮播*/
+			function over(ele){
+				ele.onmouseover=function(){
+					clearInterval(timer);
+					clearInterval(moveTimer);
+				}
+			}
+
+
 			function hasClass(elem, cls) {
 			  cls = cls || '';
 			  if (cls.replace(/\s/g, '').length == 0) return false; //当cls没有参数时，返回false

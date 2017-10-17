@@ -1,0 +1,162 @@
+<!doctype html><!--声明文档类型：html-->
+<html lang="en">
+    <head><!--头部-->
+        <meta charset="UTF-8"><!--字符编码:utf-8国际编码-->
+        <meta name="Keywords" content="关键词1,关键词2"><!--关键词-->
+        <meta name="Description" content="描述"><!--描述-->
+        <title>京东商城广告轮播-玄武老师</title><!--网页标题-->
+        <style>/* css样式 */
+            /*
+                代码的可维护利用性(命名规范 代码格式)
+                代码执行的高效性( 性能 )
+            */
+            *{/*通用选择器:选择到所有的标签元素 不提倡使用*键 */
+                margin:0;/*外边距*/
+                padding:0;/*内边距*/
+            }
+            #banner{/* # id选择器 */
+                position:relative;/*相对定位:参考物*/
+                width:730px;/*宽度*/
+                height:454px;/*高度*/
+                background:red;/*背景颜色*/
+                margin:100px auto;/*上下100px 左右自动(居中)*/
+            }
+            .img{/* . class类选择器 */
+                width:730px;/*宽度*/
+                height:454px;/*高度*/
+            }
+            .img ul li{/*混合选择器*/
+                list-style:none;/*去除前面的小黑圆点*/
+                /*opacity:0;透明度:0-1 0完全透明*/
+                display:none;/*隐藏*/
+            }
+            .img ul li.curr{
+                /*opacity:1;*/
+                display:block;
+ 
+            }
+            .icon{
+                position:absolute;/*绝对定位:定位元素*/
+                left:0px;
+                bottom:8px;
+                width:100%;/*与参考物的宽度一样*/
+                text-align:center;
+            }
+            .icon ul li{
+                display:inline-block;/*行间块级元素*/
+                list-style:none;
+                width:18px;
+                height:18px;
+                background:#000;
+                border-radius:50%;/*圆角属性*/
+                color:#fff;/*文本颜色*/
+                text-align:center;/*文本左右对齐方式*/
+                cursor:pointer;/*鼠标的形状*/
+                /*float:left;左浮动:与父元素左端对齐依次的往右端显示*/
+            }
+            .icon ul li.first{
+                background:#f00;
+            }
+            .btn{
+                display:none;/*隐藏*/
+            }
+            .btn div{
+                position:absolute;
+                top:50%;
+                width:28px;
+                height:62px;
+                background:rgba(0,0,0,0.2);/*red红色 green绿色 blue蓝色 0-255 a透明度 0-1*/
+                color:#fff;
+                font-size:24px;/*文本大小*/
+                text-align:center;
+                line-height:62px;/*行高*/
+                cursor:pointer;/*鼠标的形状*/
+ 
+            }
+            .btn div.left{
+                left:0;
+            }
+            .btn div.right{
+                right:0;
+            }
+        </style>
+    </head>
+    <body><!--身体：浏览器窗口里面的内容-->
+        <!--盒子模型标签div 宽度  高度 位置 背景 边框-->
+        <div id="banner"><!--id="自定义的名称" 唯一的(身份证号) 命名规范(见名知义:用有语义的英文单词) -->
+            <div class="img"><!--class="自定义的名称" 可重复的(姓名)-->
+                <ul><!--无序列表标签-->
+                    
+                    <li class="curr"><img src="images/x1.png" width="730" height="454" alt="广告"></li>
+                    <li><img src="images/x2.png" width="730" height="454" alt="广告"></li>
+                    <li><img src="images/x3.png" width="730" height="454" alt="广告"></li>
+                    <li><img src="images/x4.png" width="730" height="454" alt="广告"></li>
+                    <li><img src="images/x5.png" width="730" height="454" alt="广告"></li>
+                    <li><img src="images/x6.png" width="730" height="454" alt="广告"></li>
+                </ul>
+            </div>
+            <div class="icon">
+                <ul>
+                    <li class="first">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                </ul>
+            </div>
+            <div class="btn">
+                <div class="left"> < </div>
+                <div class="right"> > </div>
+            </div>
+        </div>
+        <script src="../lib/jquery-1.12.3.js"></script>
+        <!-- <script src="js/Eva-1.0.js"></script> -->
+        <script>
+            //alert($);//弹出jq的代理函数$
+            var index = 0;//定义一个索引初始值
+            var $icons = $(".icon ul li");//用一个变量来存储li的地址
+            var $imgs = $(".img ul li");
+            var timer = null;
+            $(".right").click(function(){//点击实现什么效果
+                index++;//index = index + 1
+                //$(".img ul li")选择到所有的li
+                //eq(index)选择到对应索引值的li
+                if(index>5)index=0;
+                play();
+            });
+            $(".left").click(function(){//点击实现什么效果
+                index--;//index = index - 1
+                if(index<0)index=5;
+                play();
+            });
+ 
+            function play(){
+                $icons.eq(index).addClass("first").siblings().removeClass("first");
+                $imgs.eq(index).addClass("curr").siblings().removeClass("curr");
+            }
+            $icons.hover(function(){//鼠标移上去实现什么效果
+                index = $(this).index();//鼠标移动到谁上面就获谁的序列号
+                play();
+            });
+ 
+            $("#banner").hover(function(){//鼠标移上去实现什么效果
+                $(".btn").show();//显示
+                clearInterval(timer);//清楚定时器
+            },function(){//鼠标移开实现什么效果
+                $(".btn").hide();//隐藏
+                autoplay();
+            });
+ 
+            function autoplay(){
+                timer = setInterval(function(){
+                    index++;
+                    if(index>5)index=0;
+                    play();
+                },2000);
+            }
+ 
+            autoplay();
+        </script>
+    </body>
+</html>
