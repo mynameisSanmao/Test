@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>滚动轮播图</title>
+		<style>
+			body {
+				margin: 50px;
+			}
+			
+			ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			
+			#lbt {
+				position: relative;
+				margin: 0 auto;
+				width: 810px;
+				height: 320px;
+				overflow: hidden;
+			}
+			
+			#lbt ul {
+				position: relative;
+			}
+			
+			li {
+				height: 320px;
+				overflow: hidden;
+			}
+			
+			.page {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				padding: 10px 15px;
+			}
+			
+			.page span {
+				display: inline-block;
+				margin: 0 5px;
+				width: 24px;
+				height: 24px;
+				line-height: 24px;
+				border-radius: 50%;
+				background-color: #dfdfdf;
+				text-align: center;
+				color: #666;
+			}
+			
+			.page span.active {
+				background-color: #f60;
+				color: #fff;
+			}
+			
+			.next,
+			.prev {
+				position: absolute;
+				left: 10px;
+				top: 50%;
+				margin-top: -25px;
+				width: 30px;
+				height: 50px;
+				line-height: 50px;
+				background-color: #dfdfdf;
+				text-align: center;
+				opacity: 0.6;
+				transition: all 0.5s;
+			}
+			
+			.next:hover,
+			.prev:hover {
+				opacity: 1;
+			}
+			
+			.next {
+				left: auto;
+				right: 10px;
+			}
+		</style>
+		<script>
+			/* 滚动轮播图 1）每隔3s滚动一张图片 setInterval() 2）鼠标移入时清除定时器 clearInterval() 3）鼠标移出时，重新开始定时器 setInterval() 4）实现滚动效果 setInterval() 5）生成页码 根据图片数量生成页码 6）点击页码切换相应图片 onclick 7）点击上一张/下一张按钮 onclick */
+			window.onload = function() { // 获取页面元素 
+				var lbt = document.getElementById('lbt'); var ul = lbt.firstElementChild; var page = lbt.getElementsByClassName('page')[0];
+
+				// 滚动图片的索引值，初始值为0
+				var index = 0;
+
+				// 图片数量
+				var len = ul.children.length;
+
+				// 滚动定时器标识
+				var scrollTimer;
+
+				// 1）每隔3s滚动一张图片
+				// 改变ul的top值
+				// index: top
+				// 0: 0
+				// 1: -320
+				// 2: -640
+				// 3: -960
+				// 公式推导：top = -320*index
+				var timer = setInterval(scollPic, 3000);
+
+				// 2）鼠标移入时清除定时器
+				lbt.onmouseover = function() {
+					clearInterval(timer);
+				}
+
+				// 3）鼠标移出时，重新开始定时器
+				// 重新设置一个定时器
+				lbt.onmouseout = function() {
+					timer = setInterval(scollPic, 3000);
+				}
+
+				// 5）生成页码
+				for(var i = 0; i < len; i++) {
+					var span = document.createElement('span');
+					span.innerHTML = i + 1;
+
+					// 给第一张添加高亮
+					if(i === 0) {
+						span.className = 'active';
+					}
+
+					// 6）点击页码切换相应图片
+					span.idx = i;
+					span.onclick = function() {
+						index = this.idx;
+						showPic();
+					}
+
+					page.appendChild(span)
+				}
+
+				// 7）点击上一张/下一张按钮
+				// 利用时间委托来实现
+				lbt.onclick = function(e) {
+					e = e || window.event;
+					var target = e.target || e.srcElement;
+
+					// 判断是否点击了上一张按钮
+					if(target.className == 'prev') {
+						index--;
+						showPic();
+					} else if(target.className == 'next') {
+						index++;
+						showPic();
+					}
+				}
+
+				function scollPic() {
+					index++;
+					showPic();
+				}
+
+				// 显示图片函数
+				function showPic() {
+					// 当轮播图走到最后一张时，回到第一张
+					if(index == len) {
+						index = 0;
+					} else if(index < 0) {
+						index = len - 1;
+					}
+					console.log(index);
+
+					// 改变分页数字的高亮效果
+					for(var i = 0; i < page.children.length; i++) {
+						page.children[i].className = '';
+					}
+					page.children[index].className = 'active';
+
+					// 目标值
+					var target = -320 * index;
+
+					// 清除已经存在的定时器
+					clearInterval(scrollTimer);
+					scrollTimer = setInterval(function() {
+						var current = ul.offsetTop; //-960 ==> 0
+						var speed = (target - current) / 10;
+						//index==>target:current
+						//0 ==> -320 : 0 		==> -32
+						//1 ==> -640 : -320		==> -32
+						//2 ==> -960 : -640		==> -32
+						//3 ==> 0 : -960		==> 96;
+						//			-864		==> 86.4
+						//			-500		==> 50
+						//			-450		==> 45
+						//			-5			==> -0.00001 
+						//			
+						/*if(index===0){
+							current += 40;
+						}else{
+							current -= speed;
+						}*/
+
+						// 防止speed等于0,必须要对speed进行取整
+						// 假设当speed=0.0001（接近0），如果用parseInt()取整，得到0
+						// 当speed>0时，用Math.ceil()
+						// 当speed<0时，用Math.floor()
+						speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+						current += speed;
+
+						// 当current到达目标值时，清除定时器
+						if(current === target) {
+							clearInterval(scrollTimer);
+						}
+						ul.style.top = current + 'px';
+					}, 30);
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="lbt">
+			<ul>
+				<li><img src="images/x1.png"/></li>
+				<li><img src="images/x2.png"/></li>
+				<li><img src="images/x3.png"/></li>
+				<li><img src="images/x4.png"/></li>
+			</ul>
+			<div class="page"></div> <span class="prev"><</span> <span class="next">></span> </div>
+	</body>
+
+</html>

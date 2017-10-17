@@ -9,8 +9,11 @@
 				padding: 0;
 			}
 			body{
-				background: black;
-				background: url(images/d1.png)no-repeat top center;
+				/*background: black;*/
+				/*background: url(images/d1.png)no-repeat top center;*/
+				background-image:url(images/d1.png);
+				background-position: top center;
+				background-repeat: no-repeat;
 			}
 			#qq{
 				width: 900px;
@@ -28,13 +31,14 @@
 			    cursor: pointer;
 			    border:2px solid #fff;
 			    z-index: 2;
+			    outline: none;
 			}
 			.prev{
-				background: url(images/ll.png)no-repeat;
+				background: url(images/ll.png)no-repeat -2.5px center;
 				left: 5px;
 			}
 			.next{
-				background: url(images/rr.png) no-repeat;
+				background: url(images/rr.png) no-repeat -1.5px center;
 				right: 5px;
 			}
 			.con{
@@ -51,11 +55,11 @@
 				top: 0;
 				left: 0;
 				background: pink;
-				-webkit-transition: all 1s;
-				   -moz-transition: all 1s;
-				    -ms-transition: all 1s;
-				     -o-transition: all 1s;
-				        transition: all 1s;
+				-webkit-transition: all 0.5s;
+				   -moz-transition: all 0.5s;
+				    -ms-transition: all 0.5s;
+				     -o-transition: all 0.5s;
+				        transition: all 0.5s;
 			}
 			.scroll img{
 				float: left;
@@ -69,8 +73,8 @@
 	</head>
 	<body>
 		<div id="qq">
-			<div class="btn prev disable"></div>
-			<div class="btn next"></div>
+			<button class="btn prev disable"></button>
+			<button class="btn next"></button>
 			<div class="con">
 				<div class="scroll">
 					<img src="images/x1.png"/>
@@ -94,36 +98,44 @@
 			var scroll = document.getElementsByClassName("scroll")[0];
 			var next = document.getElementsByClassName('next')[0];
 			var prev = document.getElementsByClassName('prev')[0];
+			var body = document.getElementsByTagName("body")[0];
 			var length=img.length;
 			var eq=1;
+			var moveTimer;
+			var timer=setInterval(move(eq),1000);
+			
+//			timer=setInterval(move(eq),1000);
 			scroll.style.width=(length+2)*175 +10+ 'px';
 			for(var i=0;i<length;i++){
 				img[i].i=i;
-				
 				img[i].onclick=function(){
-					// scroll.style.left=this.i * 190 + 'px'
+					var src=this.getAttribute('src').replace(/\/x/,'/d');
+					body.style.backgroundImage="url(" +src+ ")";
 				}
 				
 			}
+			
 			/*下一步*/
 			next.onclick=function(){
+				console.log('下一步')
 				prev.classList.remove("disable");
-
+				prev.style.disabled=false;
 				scroll.style.left=-(eq * 205) + 'px';
 				eq++;
 				if(eq==9){
-					next.onclick=null;
+					next.disabled='true';
 					next.classList.add("disable");
 				}
 			}
-
+			
 			/*上一步*/
 			prev.onclick=function(){
 				console.log(eq)
-				console.log('////////////////')
+				console.log('上一步')
+				next.disabled=false;
+				next.classList.remove("disable");
 				if(eq!=1){
 					eq--;
-					console.log(eq)
 					prev.classList.remove("disable");
 					if(eq==1){
 						scroll.style.left=0 + 'px';
@@ -133,10 +145,32 @@
 					
 				}else{
 					prev.classList.add("disable");
-					prev.onclick=null;
+					prev.disabled='true';
 				}
 			}
+			
+			function move(i){
+				
+				moveTimer=setInterval(function(){
+					scroll.style.left=-(i * 205) + 'px';
+					i++;
+					if(i==9){
+						i=0;
+						move(i)
+						clearInterval(moveTimer);
+					}
+					console.log("自动")
+				},1000)
+				
+			}
+//			move(eq);
 
+			scroll.onmouseover=function(){
+				console.log("清楚")
+				clearInterval(timer)
+				clearInterval(moveTimer)
+			}
+			
 			function hasClass(elem, cls) {
 			  cls = cls || '';
 			  if (cls.replace(/\s/g, '').length == 0) return false; //当cls没有参数时，返回false
