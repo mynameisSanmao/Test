@@ -150,13 +150,14 @@
 				}
 			}
 			
+			/*轮播*/
 			function move(){
 				moveTimer=setInterval(function(){
 					scroll.style.left=-(eq * 205) + 'px';
 					eq++;
 					if(eq==9){
 						eq=0;
-						move()
+						move();
 						clearInterval(moveTimer);
 					}
 				},3000)
@@ -169,7 +170,7 @@
 			/*鼠标移出继续轮播*/
 			function out(ele){
 				ele.onmouseout=function(){
-					move(eq)
+					move(eq);
 				}
 			}
 			/*鼠标移入停止轮播*/
@@ -178,29 +179,32 @@
 					clearInterval(moveTimer);
 				}
 			}
-
-
-			function hasClass(elem, cls) {
-			  cls = cls || '';
-			  if (cls.replace(/\s/g, '').length == 0) return false; //当cls没有参数时，返回false
-			  return new RegExp(' ' + cls + ' ').test(' ' + elem.className + ' ');
+			/*封装获取class，id*/
+			function $(ele,obj){
+				if(ele.charAt(0) == '#'){
+					var eleId=ele.substr(1);
+					return ducument.getElementById(eleId);
+				}else if(ele.charAt(0) == '.'){
+					var eleClass=ele.substr(1);
+					var obj=obj || document;
+					var arrClass=[];
+					if(obj.getElementsByClassName){
+						return document.getElementsByClassName(eleClass);
+					}else{
+						var dom=document.getElementsByTagName('*');
+						for(var i=0;i<dom.length;i++){
+							var domClass=dom[i].className.substr(1);
+							if(domClass == eleClass){
+								arrClass.push(dom[i])
+							}
+						}
+					}
+					return arrClass;
+				}else{
+					return false
+				}
 			}
-			 
-			function addClass(ele, cls) {
-			  if (!hasClass(elem, cls)) {
-			    ele.className = ele.className == '' ? cls : ele.className + ' ' + cls;
-			  }
-			}
-			 
-			function removeClass(ele, cls) {
-			  if (hasClass(elem, cls)) {
-			    var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, '') + ' ';
-			    while (newClass.indexOf(' ' + cls + ' ') >= 0) {
-			      newClass = newClass.replace(' ' + cls + ' ', ' ');
-			    }
-			    elem.className = newClass.replace(/^\s+|\s+$/g, '');
-			  }
-			}
+			
 		</script>
 	</body>
 </html>
