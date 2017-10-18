@@ -9,8 +9,6 @@
 				padding: 0;
 			}
 			body{
-				/*background: black;*/
-				/*background: url(images/d1.png)no-repeat top center;*/
 				background-image:url(images/d1.png);
 				background-position: top center;
 				background-repeat: no-repeat;
@@ -49,7 +47,6 @@
 				overflow: hidden;
 			}
 			.scroll{
-				/* width: 100%; */
 				height: 160px;
 				position: absolute;
 				top: 0;
@@ -65,6 +62,9 @@
 				float: left;
 				margin: 25px 15px;
 			}
+			.scroll img:hover{
+				cursor: pointer;
+			}
 			.disable{
 				cursor: no-drop;
 			}
@@ -73,7 +73,7 @@
 	</head>
 	<body>
 		<div id="qq">
-			<button class="btn prev disable"></button>
+			<button class="btn prev"></button>
 			<button class="btn next"></button>
 			<div class="con">
 				<div class="scroll">
@@ -103,9 +103,7 @@
 			var length = img.length;
 			var eq=1;
 			var moveTimer;
-			var timer=setInterval(move(),1000);
-			
-//			timer=setInterval(move(eq),1000);
+			move()
 			scroll.style.width=(length+2)*175 +10+ 'px';
 			for(var i=0;i<length;i++){
 				img[i].i=i;
@@ -113,26 +111,24 @@
 					var src=this.getAttribute('src').replace(/\/x/,'/d');
 					body.style.backgroundImage="url(" +src+ ")";
 				}
-				
 			}
+			
 			over(next);
 			out(next);
 			/*下一步*/
 			next.onclick=function(){
 				console.log('下一步')
-				clearInterval(timer)
-				clearInterval(moveTimer)
+				clearInterval(moveTimer);
 				prev.classList.remove("disable");
 				prev.style.disabled=false;
 				scroll.style.left=-(eq * 205) + 'px';
 				eq++;
 				if(eq==9){
-					// next.disabled='true';
-					// next.classList.add("disable");
 					eq=1;
 				}
 
 			}
+			
 			over(prev);
 			out(prev);
 			/*上一步*/
@@ -149,11 +145,8 @@
 					}else{
 						scroll.style.left=-(eq-1)*205 +'px'
 					}
-					
 				}else{
 					eq=9;
-					// prev.classList.add("disable");
-					// prev.disabled='true';
 				}
 			}
 			
@@ -166,24 +159,22 @@
 						move()
 						clearInterval(moveTimer);
 					}
-					console.log("自动")
-				},1000)
+				},3000)
 				
 			}
 		
 			over(con);
 			out(con);
+			
 			/*鼠标移出继续轮播*/
 			function out(ele){
 				ele.onmouseout=function(){
 					move(eq)
 				}
 			}
-
 			/*鼠标移入停止轮播*/
 			function over(ele){
 				ele.onmouseover=function(){
-					clearInterval(timer);
 					clearInterval(moveTimer);
 				}
 			}
