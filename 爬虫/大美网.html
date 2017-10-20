@@ -1,0 +1,2232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta name="Generator" content="ECJIA 1.5" />
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="favicon.ico" />
+
+		<!-- PC_CSS_JS调用 -->
+
+		<link href="../addons/sz_yi/static/css/font-awesome.min.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="../addons/sz_yi/template/pc/default/static/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../addons/sz_yi/template/pc/default/static/css/index.css">
+		<script src="../addons/sz_yi/template/pc/default/static/js/jquery.min.js"></script>
+		<script src="../addons/sz_yi/template/pc/default/static/js/bootstrap.min.js"></script>
+		<script type='text/javascript' src='../addons/sz_yi/template/pc/default/static/js/jquery.lazyload.js'></script>
+		<link href="../addons/sz_yi/template/pc/default/static/css/css.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="../addons/sz_yi/template/pc/default/static/css/stylpce.css">
+		<link rel="stylesheet" type="text/css" href="../addons/sz_yi/template/pc/default/static/css/style.css">
+		<link rel="stylesheet" href="../addons/sz_yi/template/pc/default/static/css/member-center.css">
+		<link rel="stylesheet" href="../addons/sz_yi/template/pc/default/static/css/fontello.css">
+		<link href="../addons/sz_yi/template/pc/default/static/css/suggest.css" rel="stylesheet" type="text/css" />
+		<!--<link rel="stylesheet" href="../addons/sz_yi/template/pc/default/static/css/new_navigation.css">-->
+		<!-- 原mobile_css_js调用 -->
+
+		<script language="javascript" src="../addons/sz_yi/static/js/require.js"></script>
+		<script language="javascript" src="../addons/sz_yi/static/js/app/config.js?v=2"></script>
+		<script language="javascript" src="../addons/sz_yi/static/js/dist/jquery-1.11.1.min.js"></script>
+		<script language="javascript" src="../addons/sz_yi/static/js/dist/jquery.gcjs.js"></script>
+		<!--<script language="javascript" src="../addons/sz_yi/static/js/new_navigation.js"></script>-->
+
+		<script language="javascript">
+			require(['core', 'tpl'], function(core, tpl) {
+				core.init({
+					siteUrl: "http://fx.dameiz.com/",
+					baseUrl: "http://fx.dameiz.com/app/index.php?i=2&c=entry&do=ROUTES&m=sz_yi"
+				});
+
+			})
+		</script>
+		<style type="text/css">
+			body {
+				background: #fff;
+			}
+			/* tab */
+			
+			.tab_goods_warp {
+				width: 1200px;
+				margin: 0 auto;
+				overflow: hidden;
+				*zoom: 1;
+			}
+			
+			.tab_left {
+				width: 300px;
+				height: 680px;
+				float: left;
+				position: relative;
+			}
+			
+			.tab_goods {
+				width: 900px;
+				height: 680px;
+				overflow: hidden;
+				float: left;
+			}
+			
+			.tab_goods .tab_menu {
+				width: 900px;
+				height: 40px;
+				text-align: right;
+				margin-bottom: 10px;
+				border-bottom: #333 1px solid;
+			}
+			
+			.tab_goods .tab_menu li {
+				width: 92px;
+				display: inline-block;
+				* display: inline;
+				*zoom: 1;
+				height: 40px;
+				line-height: 40px;
+				border: 1px solid #333;
+				border-bottom: 0px;
+				cursor: pointer;
+				text-align: center;
+			}
+			
+			.tab_goods .tab_menu li a {
+				display: block;
+				width: 92px;
+				height: 40px;
+				line-height: 40px;
+				color: #333;
+			}
+			
+			.tab_goods .tab_box {
+				width: 900px;
+			}
+			
+			.tab_goods .tab_menu .selected {
+				background-color: #333;
+				color: #fff;
+				cursor: pointer;
+			}
+			
+			.tab_goods .tab_menu .selected a {
+				color: #fff;
+			}
+			
+			.tab_goods .tab_menu a.more {
+				padding: 0 10px;
+			}
+			
+			.tab_goods .tab_menu a.more span {
+				font-family: SimSun;
+				display: inline-block;
+				*display: inline;
+				*zoom: 1;
+				background: #333;
+				border-radius: 50%;
+				color: #fff;
+				width: 12px;
+				height: 12px;
+				line-height: 12px;
+				font-size: 10px;
+				text-align: center;
+			}
+			
+			.tab_goods_warp .tab-third-warp {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 300px;
+				max-height: 200px;
+				overflow: hidden;
+				background: #fff;
+				filter: alpha(Opacity=80);
+				-moz-opacity: 0.8;
+				opacity: 0.8;
+				vertical-align: bottom;
+			}
+			
+			.tab_goods_warp .tab-third-warp a {
+				display: inline-block;
+				*display: inline;
+				*zoom: 1;
+				padding: 10px;
+			}
+			/*goods_tab list*/
+			
+			.tab_title span {
+				display: block;
+				width: 100%;
+				height: 40px;
+				background: #333;
+				color: #fff;
+				text-align: left;
+				padding: 0 15px;
+				line-height: 40px;
+				font-size: 16px;
+				font-weight: bold;
+			}
+			
+			.goods_tab_list .items-li {
+				float: left;
+				width: 225px;
+				padding-left: 10px;
+				background-color: #fff;
+				padding-bottom: 10px;
+				position: relative;
+			}
+			
+			.goods_tab_list .items-li .activity-tag {
+				position: absolute;
+				left: 10px;
+				top: 0px;
+				width: 82px;
+				height: 93px;
+				z-index: 2;
+			}
+			
+			.goods_tab_list .items-li .activity-tag-80 {
+				width: 105px;
+				height: 110px;
+				background: url('../images/activity_tag_80_little.png') no-repeat 0 0;
+			}
+			
+			.goods_tab_list .items-li .activity-tag-75 {
+				background: url('../images/activity_tag_75.png') no-repeat 0 0;
+			}
+			
+			.goods_tab_list .items-li .activity-tag-60 {
+				width: 100px;
+				height: 100px;
+				background: url('../images/activity_tag_60.png') no-repeat 0 0;
+			}
+			
+			.goods_tab_list .items-li .activity-tag-50 {
+				width: 100px;
+				height: 100px;
+				background: url('../images/activity_tag_50.png') no-repeat 0 0;
+			}
+			
+			.no-activity .goods_tab_list .items-li .activity-tag {
+				display: none;
+			}
+			
+			.goods_tab_list .active {
+				box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+			}
+			
+			.goods_tab_list .items-li .wrap_div {
+				width: 225px;
+				height: 54px;
+				position: relative;
+				z-index: 2;
+				background: white;
+			}
+			
+			.goods_tab_list .items-li .wrap_div p {
+				height: 20px;
+				overflow: hidden;
+				text-align: center;
+				font-size: 12px;
+				color: #71cd9c;
+			}
+			
+			.goods_tab_list .items-li .wrap_div div {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				z-index: 100;
+				width: 100%;
+				background: white;
+			}
+			
+			.goods_tab_list .items-li .wrap_div p {
+				text-align: center;
+				margin-top: 5px;
+				height: 0px;
+				overflow: hidden;
+				_line-height: 0;
+			}
+			
+			.goods_tab_list .items-li>a {
+				display: block;
+				width: 225px;
+				height: 225px;
+				text-align: center;
+				line-height: 225px;
+			}
+			
+			.goods_tab_list .items-li img {
+				max-width: 225px;
+				max-height: 225px;
+			}
+			
+			.goods_tab_list .items-li .title {
+				width: 225px;
+				font-weight: normal;
+				line-height: 22px;
+				text-align: center;
+				margin: 0;
+				padding: 10px 10px 5px 10px;
+			}
+			
+			.goods_tab_list .items-li .title a {
+				color: #333;
+			}
+			
+			.goods_tab_list .items-li .title a:hover {
+				color: #EF353D;
+			}
+			
+			.goods_tab_list .items-li .description {
+				display: block;
+				font-size: 12px;
+				color: #919191;
+				text-align: center;
+			}
+			
+			.goods_tab_list .items-li .description a {
+				color: #919191;
+			}
+			
+			.goods_tab_list .items-li .price-attente {
+				margin-top: 5px;
+			}
+			
+			.goods_tab_list .items-li .price-attente .price {
+				float: left;
+				margin-left: 10px;
+				font-size: 12px;
+				color: #ef353d;
+			}
+			
+			.goods_tab_list .items-li .price-attente .attente {
+				float: right;
+				margin-right: 10px;
+				padding-left: 15px;
+				font-size: 12px;
+				color: #71cd9c;
+				background-image: url(../images/cover-page-attente.png);
+				background-repeat: no-repeat;
+				background-position: left center;
+				cursor: pointer;
+			}
+			
+			.cover-page-wrapper h3 {
+				font-size: 14px;
+				color: #333;
+			}
+			
+			.tab_title span {
+				background-color: #dd0c1d;
+			}
+			
+			.tab_goods .tab_menu {
+				border-bottom: 1px solid #dd0c1d;
+			}
+			
+			.tab_goods .tab_menu .selected {
+				background-color: #dd0c1d;
+			}
+			
+			.tab_goods .tab_menu li {
+				border: 1px solid #dd0c1d;
+			}
+			
+			.tab_goods .tab_menu li a {
+				color: #dd0c1d;
+			}
+			
+			.tab_goods .tab_menu a.more {
+				color: #E63C3C;
+			}
+			
+			.tab_goods .tab_menu a.more span {
+				background-color: #dd0c1d;
+			}
+			
+			#n2 {
+				background-color: #fff;
+			}
+			
+			a.my_zone {
+				margin: 0 28px;
+				font-size: 14px;
+				width: 120px;
+				height: 24px;
+				line-height: 24px;
+				border: 1px solid #e60012;
+				background-color: #e60012;
+				color: #fff;
+				text-align: center;
+				display: inline-block;
+				float: left;
+				border-radius: 3px;
+			}
+		</style>
+		<title>大美网-正品低价、消费巨惊喜，消费少花钱，新零售领航者。</title>
+		<meta content='网上购物,大美,大美网,免费淘,补贴,,大美' name='Keywords'>
+		<meta content='大美网是江西大美科技股份有限公司旗下的全新购物平台，权威保障，正品低价，消费巨惊喜，开创消费全新时代。' name='Description'>
+		<!--navigation-->
+		<style>
+			body {
+				background: #FFF none repeat scroll 0 0;
+				min-width: 1200px;
+			}
+			
+			a,
+			h2,
+			h3 {
+				font: 12px/22px Arial, Verdana, "微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, sans-serif;
+				color: #666;
+			}
+			
+			html,
+			body,
+			div,
+			ul,
+			ol,
+			li,
+			dl,
+			dt,
+			dd,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			pre,
+			form,
+			p,
+			blockquote,
+			fieldset,
+			input {
+				padding: 0;
+				margin: 0;
+				font-size: smaller;
+			}
+			
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			pre,
+			code,
+			address,
+			caption,
+			cite,
+			code,
+			em,
+			strong,
+			table,
+			th,
+			td {
+				font-size: 12px;
+				font-style: normal;
+				font-weight: 400;
+			}
+			
+			a:link,
+			a:visited,
+			a:active {
+				text-decoration: none;
+			}
+			
+			a {
+				color: #333;
+				text-decoration: none !important;
+				outline: medium none;
+				blr: expression(this.onFocus=this.blur());
+			}
+			
+			ul,
+			ol {
+				list-style: none outside none;
+			}
+			
+			i,
+			cite,
+			em {
+				font-style: normal;
+			}
+			
+			img {
+				vertical-align: bottom;
+			}
+			
+			fieldset,
+			img {
+				border: medium none;
+			}
+			
+			input,
+			button,
+			select,
+			textarea {
+				outline: 0;
+			}
+			
+			input,
+			select,
+			textarea,
+			#keyword {
+				font: 12px/22px Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+			}
+			
+			b {
+				margin: 0;
+				font-size: smaller;
+				display: block;
+			}
+			
+			.top_l {
+				width: 100%;
+				height: 32px;
+				background-color: #f1f1f1;
+				border-bottom: 1px solid #e7e7e7;
+			}
+			
+			.top_m {
+				width: 1200px;
+				margin: 0 auto;
+				line-height: 32px;
+			}
+			
+			.top_m h2 {
+				float: left;
+				height: 32px;
+				line-height: 32px;
+			}
+			
+			.top_nav {
+				float: right;
+			}
+			
+			.top_nav li {
+				min-width: 80px;
+				float: left;
+				text-align: center;
+				height: 32px;
+				line-height: 32px;
+				position: relative;
+			}
+			
+			.top_nav li a {
+				color: #666;
+			}
+			
+			.top_nav li b {
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				color: #dfdfdf;
+			}
+			
+			.nav_on {
+				background-color: #fff;
+			}
+			
+			.top_nav li i {
+				width: 13px;
+				height: 13px;
+				margin-left: 3px;
+				display: inline-block;
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) 4px 4px no-repeat;
+				vertical-align: middle;
+				-webkit-transition: .2s ease-in;
+				-moz-transition: -webkit-transform .2s ease-in;
+				-o-transition: -webkit-transform .2s ease-in;
+				transition: .2s ease-in;
+			}
+			
+			.top_nav li:hover i {
+				FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+				-moz-transform: rotate(180deg);
+				-moz-transform-origin: 50% 48%;
+				-webkit-transform: rotate(180deg);
+				-webkit-transform-origin: 50% 48%;
+				-o-transform: rotate(180deg);
+				-o-transform-origin: 50% 48%;
+				transform: rotate(180deg);
+				transform-origin: 50% 48%;
+			}
+			
+			.top_nav li .dl {
+				width: 79px;
+				background-color: #ffffff;
+				position: absolute;
+				left: -1px;
+				top: 32px;
+				border: solid 1px #F0F0F0;
+				border-top-color: #ffffff;
+				z-index: 1;
+				display: none;
+			}
+			
+			.top_nav li.sitemap .smapc {
+				width: 1200px;
+				border: 1px solid #f0f0f0;
+				padding: 14px 0 15px;
+				position: absolute;
+				top: 32px;
+				right: -1px;
+				background-color: #ffffff;
+				z-index: 10;
+				display: none;
+			}
+			
+			.top_nav .dl p:hover {
+				background-color: #f1f1f1;
+			}
+			
+			.app_c {
+				width: 360px;
+				height: 196px;
+				position: absolute;
+				overflow: hidden;
+				left: -122px;
+				top: 32px;
+				border: solid 1px #F0F0F0;
+				border-top-color: #ffffff;
+				background-color: #ffffff;
+				z-index: 1;
+				display: none;
+			}
+			
+			.app_c .app_line {
+				position: absolute;
+				top: 42px;
+				left: 179px;
+				width: 1px;
+				height: 97px;
+				background: #DEDEDE;
+			}
+			
+			.app_c p {
+				float: left;
+				width: 180px;
+				margin: 17px 0 0;
+				border-bottom: 1px dotted #F0F0F0;
+				padding-bottom: 10px;
+			}
+			
+			.app_c p a {
+				display: inline-block;
+			}
+			
+			.top_nav li.sitemap .smapc dl {
+				width: 278px;
+				float: left;
+				border-right: 1px solid #f0f0f0;
+				margin-left: 20px;
+			}
+			
+			.top_nav li.sitemap .smapc dl dt {
+				color: #333;
+				font-size: 16px;
+				text-align: left;
+				line-height: 34px;
+			}
+			
+			.bod_r_n {
+				border-right: none !important;
+			}
+			
+			.top_nav li.sitemap .smapc dl dd {
+				font-family: "宋体";
+				text-align: left;
+				line-height: 24px;
+			}
+			
+			.top_nav li.sitemap .smapc dl dd .item {
+				width: 86px;
+				float: left;
+			}
+			
+			.top_nav li.sitemap .smapc dl dd a:hover {
+				color: #dd0c1d;
+			}
+			
+			.header_znq {
+				width: 100%;
+				background-color: #fff;
+			}
+			
+			.losc_m {
+				width: 1200px;
+				height: 120px;
+				margin: 0 auto;
+			}
+			
+			.losc_m h2 {
+				width: 240px;
+				height: 117px;
+				float: left;
+			}
+			
+			.asc {
+				width: 960px;
+				padding-top: 37px;
+				float: left;
+				position: relative;
+			}
+			
+			.area {
+				width: 84px;
+				height: 49px;
+				float: left;
+				text-align: center;
+			}
+			
+			.area dt {
+				line-height: 24px;
+				height: 26px;
+				font-size: 16px;
+				font-weight: bold;
+				color: #000000;
+			}
+			
+			.area dd {
+				width: 61px;
+				height: 21px;
+				border: 1px solid #e5e5e5;
+				display: inline-block;
+				position: relative;
+				background-color: #ffffff;
+			}
+			
+			.area dd a {
+				width: 61px;
+				height: 21px;
+				color: #a0a0a0;
+			}
+			
+			.area dd i {
+				width: 61px;
+				height: 1px;
+				position: absolute;
+				left: 0;
+				bottom: -1px;
+				z-index: 2;
+				background-color: #ffffff;
+				display: none;
+			}
+			
+			.area_c {
+				width: 296px;
+				border: 1px solid #e5e5e5;
+				position: absolute;
+				top: 21px;
+				left: -1px;
+				background-color: #ffffff;
+				z-index: 1;
+				display: none;
+			}
+			
+			.area_c li {
+				width: 59px;
+				line-height: 34px;
+				text-align: center;
+				float: left;
+			}
+			
+			.area_c li a {
+				color: #333333;
+			}
+			
+			.search {
+				width: 439px;
+				float: left;
+				margin-left: 58px;
+			}
+			
+			.search dt {
+				display: table;
+			}
+			
+			.sctab {
+				height: 10px;
+				display: table;
+			}
+			
+			.sctab li {
+				line-height: 25px;
+				float: left;
+				padding: 0 8px;
+			}
+			
+			.sctab li.sctab_ck {
+				background-color: #eb0000;
+			}
+			
+			.sctab li.sctab_ck a {
+				color: #fff;
+				font-weight: bold;
+			}
+			
+			.search dt input {
+				width: 70px;
+				height: 34px;
+				line-height: 34px;
+				font-size: 14px;
+				float: left;
+				color: #ffffff;
+				border: none;
+				cursor: pointer;
+			}
+			
+			.search dt .sc_input {
+				width: 300px;
+				height: 32px;
+				border-top: 1px solid #e60012;
+				border-bottom: 1px solid #e60012;
+				border-left: 1px solid #e60012;
+				border-right: none;
+				padding-left: 40px;
+				font-size: 12px;
+				color: #666666;
+				float: left;
+				background: url(../addons/sz_yi/template/pc/default/static/images/sc_fdj.png) 12px 7px no-repeat;
+			}
+			
+			.search dt .sc_goods {
+				background-color: #e60012;
+				margin-right: 2px;
+			}
+			
+			.search dt .sc_stores {
+				background-color: #666666;
+			}
+			
+			.search dd a {
+				margin-right: 14px;
+				color: #999;
+				font-family: "宋体", Arial;
+			}
+			
+			.mycart {
+				width: 138px;
+				height: 32px;
+				line-height: 32px;
+				border: 1px solid #dfdfdf;
+				background-color: #f9f9f9;
+				float: left;
+				position: relative;
+				margin-top: 10px;
+				margin-right: 30px;
+				margin-left: 20px;
+			}
+			
+			.mycart b {
+				width: 18px;
+				height: 14px;
+				line-height: 14px;
+				overflow: hidden;
+				position: absolute;
+				text-align: center;
+				right: 18px;
+				top: -3px;
+				color: #ffffff;
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) -19px 0px no-repeat;
+			}
+			
+			.mycart .ma {
+				width: 92px;
+				color: #333;
+				height: 32px;
+				display: block;
+				padding-left: 46px;
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) -459px 8px no-repeat;
+			}
+			
+			.mycart .ma i {
+				width: 15px;
+				height: 34px;
+				display: inline-block;
+				vertical-align: middle;
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) -33px -16px no-repeat;
+			}
+			
+			.mycart u {
+				width: 138px;
+				height: 1px;
+				position: absolute;
+				left: -1px;
+				top: 32px;
+				background-color: #ffffff;
+				display: block;
+				z-index: 3;
+				display: none;
+			}
+			
+			.cart_list {
+				width: 318px;
+				position: absolute;
+				right: -1px;
+				top: 32px;
+				border: solid 1px #F0F0F0;
+				background-color: #ffffff;
+				z-index: 1;
+				display: none;
+			}
+			
+			.cart_list .h2 {
+				padding-left: 8px;
+				height: 36px;
+				line-height: 36px;
+				font-weight: bold;
+				color: #333333;
+				font-size: 12px;
+				text-align: left;
+				margin: 0;
+			}
+			
+			.cart_list .h3 {
+				padding-left: 8px;
+				height: 44px;
+				line-height: 44px;
+				width: 310px;
+				color: #333333;
+				font-size: 12px;
+				background: #f5f5f5;
+				margin: 0;
+			}
+			
+			.cart_list .h3 span {
+				display: inline-block;
+				float: left;
+				margin-right: 14px;
+			}
+			
+			.cart_list .h3 .ctlt_buy {
+				width: 69px;
+				height: 29px;
+				line-height: 29px;
+				background: #eb0000;
+				float: right;
+				margin-right: 7px;
+				margin-top: 7px;
+				text-align: center;
+				border-radius: 2px;
+			}
+			
+			.cart_list .h3 .ctlt_buy a {
+				color: #ffffff;
+			}
+			
+			.xjhhr {
+				position: absolute;
+				right: 0px;
+				top: 8px;
+			}
+			
+			.nav_l {
+				width: 100%;
+				height: 43px;
+				border-bottom: 2px solid #e60012;
+			}
+			
+			.nav_m {
+				width: 1200px;
+				height: 43px;
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			.lnav {
+				width: 212px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			.lnav dt {
+				font-size: 16px;
+				height: 43px;
+				background-color: #f32613;
+				padding-bottom: 2px;
+			}
+			
+			.lnav dt a {
+				width: 212px;
+				height: 43px;
+				line-height: 43px;
+				display: block;
+				padding-left: 16px;
+				color: #fff;
+				font-size: 16px;
+			}
+			
+			.lnav dt .ico_all {
+				width: 21px;
+				height: 43px;
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: 10px;
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) -59px 15px no-repeat;
+			}
+			
+			.lnav dd {
+				height: 44px;
+				background-color: #dd0c1d;
+				border-bottom: 1px solid #e02e3c;
+				position: relative;
+				z-index: 2;
+			}
+			
+			.lnav dd a {
+				color: #ffc6c6;
+				white-space: nowrap;
+				display: inline-block;
+			}
+			
+			.lnav dd .class_t {
+				padding-left: 16px;
+				font-size: 13px;
+				color: #ffffff;
+				font-weight: bold;
+				display: inline-block;
+				height: 44px;
+				line-height: 44px;
+			}
+			
+			.ico {
+				display: inline-block;
+				width: 22px;
+				height: 22px;
+				vertical-align: top;
+				margin-right: 6px;
+				padding-top: 12px;
+				margin-right: 15px;
+				overflow: hidden;
+			}
+			
+			.lnav dd .ico b {
+				vertical-align: top;
+				display: inline-block;
+				width: 100%;
+				height: 22px;
+			}
+			
+			.lnav dd:hover a.class_t {
+				color: #dd0c1d;
+			}
+			
+			.gopng_11 {
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) no-repeat;
+				background-position: -59px -34px;
+			}
+			
+			.lnav span.icon_arrow {
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) no-repeat -495px -379px;
+				width: 8px;
+				height: 8px;
+				display: inline-block;
+				position: absolute;
+				right: 14px;
+				top: 19px;
+			}
+			
+			.snav_c {
+				height: 495px;
+				width: 820px;
+				position: absolute;
+				left: 212px;
+				top: 0;
+				display: table;
+				display: none;
+				z-index: 1;
+			}
+			
+			.snav_c dl {
+				height: 493px;
+				display: block;
+				float: left;
+				background: #fff;
+				border-top: 1px solid #dedede;
+				border-right: 1px solid #dedede;
+				border-bottom: 1px solid #dedede;
+			}
+			
+			.snav_c dt:hover a {
+				color: #dd0c1d;
+			}
+			
+			.bod_r0 {
+				border-right: 0px !important;
+			}
+			
+			.snav_c dl dt {
+				width: 108px;
+				line-height: 47px;
+				height: 47px;
+				text-align: center;
+				background-color: #fff;
+				padding-bottom: 0;
+				font-size: 14px;
+			}
+			
+			.snav_c dl dt a {
+				color: #333;
+				display: block;
+				width: 108px;
+				padding-left: 0px;
+			}
+			
+			.mnav {
+				width: 960px;
+				float: left;
+				margin-left: 216px;
+			}
+			
+			.mnav li {
+				float: left;
+				line-height: 43px;
+				height: 43px;
+				font-size: 15px;
+				padding: 0 18px;
+			}
+			
+			.mnav li a:hover,
+			.mnav li .hover {
+				color: #e60012;
+			}
+			
+			.banner_m {
+				width: 1200px;
+				display: table;
+				margin: 0 auto;
+			}
+			
+			.banner_c {
+				width: 768px;
+				height: 495px;
+				margin: 10px 10px 0px 222px;
+				float: left;
+				position: relative;
+			}
+			
+			.banner_c .lbtn {
+				width: 30px;
+				height: 84px;
+				position: absolute;
+				left: 19px;
+				top: 206px;
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) 0px -212px no-repeat;
+				display: none;
+				z-index: 3;
+			}
+			
+			.bnr_s {
+				width: 768px;
+				height: 485px;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.bnr_s li {
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			
+			.bnr_s li img {
+				height: 485px;
+				width: 768px;
+			}
+			
+			.banner_c .rbtn {
+				width: 30px;
+				height: 84px;
+				position: absolute;
+				right: 19px;
+				top: 206px;
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) -30px -212px no-repeat;
+				display: none;
+				z-index: 3;
+			}
+			
+			.bner_u {
+				display: table;
+				margin: 0px auto;
+				text-align: center;
+			}
+			
+			.bner_u li {
+				width: 90px;
+				height: 40px;
+				line-height: 40px;
+				float: left;
+				margin-right: 1px;
+				background: url(../addons/sz_yi/template/pc/default/static/images/blackbg.png) 0 0 repeat;
+				color: #ffffff;
+				position: relative;
+				margin-top: 10px;
+				display: table-cell;
+				top: -57px;
+			}
+			
+			.bner_u li.lion {
+				height: 40px;
+				padding-top: 10px;
+				margin-top: 0;
+			}
+			
+			.bner_u li .lihon {
+				width: 130px;
+				padding: 7px 13px;
+				position: absolute;
+				left: 0;
+				bottom: 40px;
+				background: url(../addons/sz_yi/template/pc/default/static/images/blackbg.png) 0 0 repeat;
+				display: none;
+			}
+			
+			.bner_u li.lion span {
+				height: 4px;
+				position: absolute;
+				top: 7px;
+				left: 50%;
+				margin-left: -16px;
+			}
+			
+			.bner_u li.lion span .spon {
+				background-color: #ffaa00;
+			}
+			
+			.bner_u li.lion span b {
+				width: 8px;
+				height: 4px;
+				background-color: #ffffff;
+				margin-right: 3px;
+				display: inline-block;
+				float: left;
+				cursor: pointer;
+				z-index: 3;
+			}
+			
+			.bner_u li .lihon p {
+				line-height: 23px;
+				text-align: left;
+			}
+			
+			.bner_u li .lihon p a {
+				color: #ffffff;
+			}
+			
+			.bner_u li .lihon p i {
+				width: 8px;
+				height: 4px;
+				background-color: #ffffff;
+				margin-right: 8px;
+				display: inline-block;
+				vertical-align: middle;
+			}
+			
+			.bner_u li .lihon p.hover i {
+				background-color: #ffaa00;
+			}
+			
+			.bnews {
+				width: 200px;
+				float: right;
+				padding-top: 10px;
+			}
+			
+			.bnews_c {
+				width: 198px;
+				border: 1px solid #e9e8ed;
+				background-color: #f9f9f9;
+			}
+			
+			.mebrinfo {
+				width: 178px;
+				display: table;
+				padding: 11px 10px 16px 10px;
+				position: relative;
+			}
+			
+			.mebrinfo dt {
+				width: 50px;
+				height: 50px;
+				margin-left: 6px;
+				margin-right: 10px;
+				float: left;
+			}
+			
+			.mebrinfo dt img {
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+			}
+			
+			.mebrinfo dd {
+				padding-top: 5px;
+				float: left;
+			}
+			
+			.mebrinfo dd h2 {
+				font-size: 14px;
+				color: #e60012;
+			}
+			
+			.mebrinfo dd h3 {
+				display: inline-block;
+			}
+			
+			.log_c {
+				width: 176px;
+				padding: 0 11px;
+				display: table;
+				font-size: 14px;
+				margin: 0 auto 15px auto;
+			}
+			
+			a.logbtn {
+				font-size: 14px;
+				width: 83px;
+				height: 24px;
+				line-height: 24px;
+				border: 1px solid #e60012;
+				background-color: #e60012;
+				color: #fff;
+				text-align: center;
+				display: inline-block;
+				float: left;
+				border-radius: 3px;
+			}
+			
+			a.regbtn {
+				font-size: 14px;
+				color: #333;
+				width: 83px;
+				height: 24px;
+				line-height: 24px;
+				border: 1px solid #dfdfdf;
+				display: inline-block;
+				text-align: center;
+				float: right;
+				border-radius: 3px;
+			}
+			
+			a.regbtn:hover {
+				color: #dd0c1d;
+			}
+			
+			.bnews_c {
+				width: 198px;
+				border: 1px solid #e9e8ed;
+				background-color: #f9f9f9;
+			}
+			
+			.news_t {
+				width: 170px;
+				padding: 0 14px;
+				height: 35px;
+				line-height: 35px;
+				display: table;
+				border-bottom: 1px dashed #e0e0e0;
+			}
+			
+			.news_t h2 {
+				height: 35px;
+				line-height: 35px;
+				font-size: 14px;
+				float: left;
+			}
+			
+			.news_t h2 a {
+				font-size: 14px;
+				color: #e60012;
+			}
+			
+			.news_t h3 {
+				height: 35px;
+				line-height: 35px;
+				float: right;
+			}
+			
+			.news_t h3 a {
+				color: #333;
+			}
+			
+			.news_t h3:hover a {
+				color: #e60012;
+			}
+			
+			.news_t h3 i {
+				width: 9px;
+				height: 35px;
+				display: inline-block;
+				vertical-align: middle;
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) -39px -16px no-repeat;
+			}
+			
+			.newslst {
+				width: 176px;
+				padding: 6px 8px 8px 14px;
+				text-overflow: clip;
+				min-height: 155px;
+			}
+			
+			.newslst li {
+				height: 31px;
+				font: 12px/1.5 arial, tahoma, 宋体;
+				line-height: 30px;
+			}
+			
+			.newslst li a {
+				color: #666;
+			}
+			
+			.newslst li:hover a {
+				color: #e60012;
+			}
+			
+			.newslst li a span {
+				margin-right: 7px;
+			}
+			
+			.lesrv {
+				width: 198px;
+				display: table;
+				padding-left: 1px;
+				border-top: 1px solid #e9e8ed;
+				border-left: 1px solid #e9e8ed;
+				background-color: #fff;
+			}
+			
+			.lesrv li {
+				width: 65px;
+				height: 68px;
+				float: left;
+				border-right: 1px solid #e9e8ed;
+				border-bottom: 1px solid #e9e8ed;
+			}
+			
+			.lesrv li a {
+				height: 28px;
+				line-height: 28px;
+				text-align: center;
+				padding-top: 40px;
+				display: block;
+				color: #333;
+			}
+			
+			.lesrv li:hover a {
+				color: #e60012;
+			}
+			
+			.ico_cz {
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) 22px -57px no-repeat;
+			}
+			
+			.ico_cx {
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) -48px -57px no-repeat;
+			}
+			
+			.ico_game {
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) -126px -57px no-repeat;
+			}
+			
+			.ico_ly {
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) -201px -57px no-repeat;
+			}
+			
+			.ico_ycp {
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) -280px -57px no-repeat;
+			}
+			
+			.ico_dyp {
+				background: url(../addons/sz_yi/template/pc/default/static/images/isprite.png) -358px -57px no-repeat;
+			}
+			
+			.area_c li a:hover {
+				color: #dd0c1d;
+			}
+			
+			#keyword {
+				padding: 0;
+				padding-left: 40px;
+			}
+			
+			.area dt a {
+				color: #333;
+				font-size: 16px;
+				font-weight: bold;
+			}
+			
+			#n2 div,
+			#n2 h2,
+			#n2 h3,
+			#n2 a,
+			#n2 b,
+			#n2 p,
+			#n2 ul,
+			#n2 li,
+			#n2 dl,
+			#n2 dt,
+			#n2 dd,
+			#n2 input,
+			#n2 span,
+			#n2 i {
+				box-sizing: content-box;
+			}
+			
+			.mnav li a {
+				font-size: 15px;
+				color: #333;
+			}
+			
+			.snav_c dl dt a {
+				font-size: 14px;
+			}
+			
+			.lnav dd .ico b {
+				background-repeat: no-repeat;
+				background-size: 44px 22px;
+				background-position: 0px 0px;
+			}
+			
+			.lnav dd:hover .ico b {
+				background-position: -22px 0px;
+			}
+		</style>
+
+		<body>
+			<div id="n2">
+				<div class="top_l">
+					<div class="top_m">
+						<h2><a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=index&do=shop&m=sz_yi">HI ！欢迎来到大美网</a></h2>
+						<ul class="top_nav">
+							<li>
+								<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=login&do=member&m=sz_yi">登录</a>&nbsp;|
+								<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=register&do=member&m=sz_yi">注册</a>
+							</li>
+							<li class="nava">
+								<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&do=order&m=sz_yi">会员中心</a>
+								<div class="dl" style="display: none;">
+									<p>
+										<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&status=0&do=order&m=sz_yi" rel="nofollow">待付款订单</a>
+									</p>
+									<p>
+										<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&status=1&do=order&m=sz_yi" rel="nofollow">待发货订单</a>
+									</p>
+									<p>
+										<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&status=2&do=order&m=sz_yi" rel="nofollow">待确认收货</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="header_znq">
+					<div class="losc_m">
+						<h2>
+                                        <a alt="大美网" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=index&do=shop&m=sz_yi">
+
+                                                                                                                                                                                                                                        <img src="http://fx.dameiz.com/attachment/images/2/2017/05/zG37LMG0qlgZMCG7z0C23wjlGWMZpm.jpg" alt="大美网-正品低价、消费巨惊喜 ，消费少花钱，新零售领航者。">
+                                                                                        </a>
+                                </h2>
+
+						<div class="asc">
+							<dl class="area"></dl>
+							<dl class="search">
+								<dt>
+                                                        <ul class="sctab"></ul>
+                                                        <input name="k_template" type="hidden" class="k_value" value="0"/>
+                                                        <input name="keywords" id="keyword" class="sc_input" type="text" value="" maxlength="60" autocomplete="off" x-webkit-speech="" lang="zh-CN" onwebkitspeechchange="foo()" placeholder="输入关键字搜索" x-webkit-grammar="builtin:search" _hover-ignore="1"/>
+                                                        <input type="button" id="button" value="搜索" class="sc_goods search_btn" onclick="searchGoodAndStore('sc_goods')" style="margin: 0;" />
+                                                </dt>
+							</dl>
+							<div class="mycart">
+								<b>0</b>
+								<a class="ma" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=cart&do=shop&m=sz_yi" rel="nofollow">我的购物车<i></i></a>
+								<u></u>
+								<div class="cart_list js_cart_list" style="display: none">
+									<div class="h2">最新加入的商品</div>
+									<div class="h3">
+										<span>共0计件商品</span>
+										<span>共计0.00</span>
+										<span class="ctlt_buy">
+                                                                        <a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=cart&do=shop&m=sz_yi" target="_blank">去购物车</a>
+                                                                </span>
+									</div>
+								</div>
+							</div>
+							<div class="xjhhr">
+								<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&method=index&p=bonus&m=sz_yi&do=plugin">
+									<img src="http://www.lecuntao.com/homenew/templates/default/images/xjhhr.png?v=573cbb6fbe">
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav_l">
+						<div class="nav_m">
+							<dl class="lnav left-list">
+								<script id='tpl_category_list' type='text/html'>
+									<dt>
+                                                        <a nohref="">
+                                                                <i class="ico_all"></i>全部商品分类
+                                                        </a>
+                                                </dt>
+									<%each category as value index%>
+									<dd>
+										<a class="class_t" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=list&do=shop&m=sz_yi&pcate=<%value.id%>">
+											<span class="ico">
+                                                                                <b style="background-image: url(<%value.thumb%>);"></b>
+                                                                        </span>
+											<%value.name%>
+											<span class="icon_arrow"></span>
+										</a>
+
+										<div class="snav_c" style="top: <%index*-45%>px; display: none;">
+											<%each value.children as value1 index1%>
+											<dl <%if (index1+1) !=v alue.children.length%>class="bod_r0"
+												<%/if%>>
+												<%each value1 as value2%>
+												<dt><a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=list&do=shop&m=sz_yi&ccate=<%value2.id%>&pcate=<%value.id%>"><%value2.name%></a></dt>
+												<%/each%>
+											</dl>
+											<%/each%>
+										</div>
+									</dd>
+									<%/each%>
+								</script>
+							</dl>
+							<ul class="mnav">
+								<li>
+									<a class="hover" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=index&do=shop&m=sz_yi">首页</a>
+								</li>
+								<li>
+									<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=list&order=sales&by=desc&do=shop&m=sz_yi" target="_blank">全部商品</a>
+								</li>
+								<li>
+									<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=notice&do=shop&m=sz_yi" target="_blank">店铺公告</a>
+								</li>
+								<li>
+									<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=commission&m=sz_yi&do=plugin" target="_blank">成为分销商</a>
+								</li>
+								<li>
+									<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=info&do=member&m=sz_yi" target="_blank">会员中心</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</body>
+		<script type="text/javascript">
+			var showId = 0;
+			var inter = null;
+
+			$(function() {
+				changeHeader();
+				$('.top_nav li').mouseover(function() {
+					var className = $(this).attr('class');
+					if(className && className != '') {
+						$(this).addClass('nav_on');
+						$(this).find('div').show();
+					}
+				}).mouseout(function() {
+					$(this).removeClass('nav_on');
+					$(this).find('div').hide();
+				})
+
+				$('.sctab li').on('click', function() {
+					$('.sctab li').removeClass('sctab_ck');
+					$(this).addClass('sctab_ck');
+					var type = $(this).find('a').attr('data-type');
+					$('#type').val(type);
+				})
+
+				$('.nav_l .lnav').on('mouseover', 'dd', function() {
+					$(this).css('background-color', '#fff');
+					$(this).find('.snav_c').show();
+				}).on('mouseout', 'dd', function() {
+					$(this).css('background-color', '#dd0c1d');
+					$(this).find('.snav_c').hide();
+				})
+			})
+
+			function changeHeader() {
+				var reg = new RegExp("(^|&)p=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+
+				if(r) {
+					$('.mnav').find('a').removeClass('hover');
+					switch(r[2]) {
+						case 'index':
+							$('.mnav').find('a').eq(0).addClass('hover');
+							break;
+						case 'list':
+							$('.mnav').find('a').eq(1).addClass('hover');
+							break;
+						case 'detail':
+							$('.mnav').find('a').eq(1).addClass('hover');
+							break;
+						case 'notice':
+							$('.mnav').find('a').eq(2).addClass('hover');
+							break;
+					}
+				}
+			}
+		</script>
+
+		<script language='javascript'>
+			require(['tpl', 'core'], function(tpl, core) {
+				core.json('shop/util', {
+					op: 'category'
+				}, function(json) {
+					var data = json.result;
+					var category = data;
+					var children = [];
+					var c_arr = [];
+
+					$.each(data.category, function(i, v) {
+						$.each(v.children, function(i2, v2) {
+							c_arr.push(v2);
+							if((i2 != 0 && ((i2 + 1) % 11) == 0) || ((i2 + 1) == v.children.length)) {
+								children.push(c_arr);
+								c_arr = [];
+							}
+						})
+						category.category[i].children = children;
+						children = [];
+					})
+					//console.log(JSON.stringify(category));
+					//category.category.slice(1,11);
+					category.category.splice(11, category.category.length - 1);
+					$('.left-list').html(tpl('tpl_category_list', category));
+				}, true);
+
+				$('#keyword').keyup(function() {
+					if(event.keyCode == 13) {
+						$('.search_btn').click();
+						return;
+					}
+				});
+
+				$('.search_btn').click(function() {
+					var args = {
+						page: "",
+						isnew: "",
+						ishot: "",
+						isrecommand: "",
+						isdiscount: "",
+						keywords: "",
+						istime: "",
+						pcate: "",
+						ccate: "",
+						tcate: "",
+						order: "",
+						by: "",
+						shopid: "",
+						keywords: $("#keyword").val()
+					};
+					location.href = core.getUrl('shop/list', args);
+				});
+
+			});
+		</script>
+		<div id="n2">
+			<div class="banner_m">
+				<div class="banner_c">
+					<a href="javascript:;" class="lbtn"></a>
+					<ul class="bnr_s">
+						<li style="display: list-item;">
+							<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=list&order=sales&by=desc&do=shop&m=sz_yi" target="_blank">
+								<img src="http://fx.dameiz.com/attachment/images/2/2017/05/E7Rbr24ZRe1ee55xRmse84m4rB82Ox.jpg" alt="欢迎1" title="欢迎1">
+							</a>
+						</li>
+					</ul>
+					<a href="javascript:;" class="rbtn"></a>
+					<ul class="bner_u">
+						<li cid="0" class="lion">
+							欢迎1 <span><b class="spon" style="width: 28px;"></b></span>
+						</li>
+					</ul>
+				</div>
+
+				<div class="bnews">
+					<div class="bnews_c" style="margin-bottom:10px;">
+						<dl class="mebrinfo">
+							<dt><img src="../addons/sz_yi/template/pc/default/static/images/hi.jpg"></dt>
+							<dd>
+								<h2>HI~你好！</h2>
+								<h3>欢迎来到大美网</h3></dd>
+						</dl>
+						<p class="log_c">
+							<a class="logbtn" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=login&do=member&m=sz_yi">登录</a>
+							<a class="regbtn" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=register&do=member&m=sz_yi">注册</a>
+						</p>
+					</div>
+					<div class="bnews_c" style="margin-bottom:10px;">
+						<div class="news_t">
+							<h2><a href="javascript:void(0)">大美网资讯</a></h2>
+							<h3><a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=notice&do=shop&m=sz_yi">更多<i></i></a></h3>
+						</div>
+						<ul class="newslst">
+							<script id='tpl_notice_list' type='text/html'>
+								<%each list as value%>
+								<li>
+									<a href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=notice&do=shop&m=sz_yi&id=<%value.id%>" target="_blank" title="<%value.title%>">
+										<span>[公告]</span>
+										<%value.title_d%>
+									</a>
+								</li>
+								<%/each%>
+							</script>
+						</ul>
+					</div>
+					<ul class="lesrv">
+						<li>
+							<a class="ico_cz" href="#" title="即将上线,敬请期待">充值</a>
+						</li>
+						<li>
+							<a class="ico_cx" href="#" title="即将上线,敬请期待">车险</a>
+						</li>
+						<li>
+							<a class="ico_game" href="#" title="即将上线,敬请期待">游戏</a>
+						</li>
+						<li>
+							<a class="ico_ly" href="#" title="即将上线,敬请期待">旅行</a>
+						</li>
+						<li>
+							<a class="ico_ycp" href="#" title="即将上线,敬请期待">演出票</a>
+						</li>
+						<li>
+							<a class="ico_dyp" href="#" title="即将上线,敬请期待">电影票</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="cover-page-index fl wfs">
+			<div class="cover-page-wrapper">
+				<div class="boutique boutique-index mt20 fl wfs">
+					<h3>精品推荐</h3>
+					<div class="canvas">
+						<ul class="items" style="width: 1200px;margin:0">
+							<li class="items-li j-items-li">
+								<a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=detail&do=shop&m=sz_yi&id=13121" style="position:relative;">
+									<img src="http://fx.dameiz.com/attachment/images/sz_yi/2/2017/10/tz6BZo66Yk21kbuByO0l1KmkiMOXkY.jpg" title="">
+								</a>
+								<div class="wrap_div">
+									<b class="title">
+                                                                                        <a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=detail&do=shop&m=sz_yi&id=13121" title="外套男春装2017新款韩版潮流运动上外防风衣服春秋季百搭宽松夹克">外套男春装2017新款韩版潮流运动上外防风衣服春秋季百搭宽松夹克</a>
+                                                                                </b>
+								</div>
+								<p class="price-attente">
+									<span class="price">￥81.25元</span>
+									<span class="attente" title="库存">库存:17279</span>
+								</p>
+							</li>
+							<li class="items-li j-items-li">
+								<a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=detail&do=shop&m=sz_yi&id=13122" style="position:relative;">
+									<img src="http://fx.dameiz.com/attachment/images/sz_yi/2/2017/10/gEqdoMdRmRPtmFEhDQtqgNDZGTZntp.jpg" title="">
+								</a>
+								<div class="wrap_div">
+									<b class="title">
+                                                                                        <a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=detail&do=shop&m=sz_yi&id=13122" title="新款毛呢阔腿裤女秋冬九分宽松休闲百搭韩版显瘦外穿直筒高腰裤子">新款毛呢阔腿裤女秋冬九分宽松休闲百搭韩版显瘦外穿直筒高腰裤子</a>
+                                                                                </b>
+								</div>
+								<p class="price-attente">
+									<span class="price">￥100.00元</span>
+									<span class="attente" title="库存">库存:49459</span>
+								</p>
+							</li>
+							<li class="items-li j-items-li">
+								<a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=detail&do=shop&m=sz_yi&id=13117" style="position:relative;">
+									<img src="http://fx.dameiz.com/attachment/images/2/2017/10/OL7KBe7ZambSb3SzsakkAeE2Z2a6au.jpg" title="">
+								</a>
+								<div class="wrap_div">
+									<b class="title">
+                                                                                        <a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=detail&do=shop&m=sz_yi&id=13117" title="羽绒服男士2017新款修身加厚韩版青年短款冬装外套特价潮">羽绒服男士2017新款修身加厚韩版青年短款冬装外套特价潮</a>
+                                                                                </b>
+								</div>
+								<p class="price-attente">
+									<span class="price">￥198.75元</span>
+									<span class="attente" title="库存">库存:20</span>
+								</p>
+							</li>
+							<li class="items-li j-items-li">
+								<a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=detail&do=shop&m=sz_yi&id=13059" style="position:relative;">
+									<img src="http://fx.dameiz.com/attachment/images/sz_yi/2/2017/09/iNID2jlDC0N2LDZc702jsn0Cc4ZNqn.jpg" title="">
+								</a>
+								<div class="wrap_div">
+									<b class="title">
+                                                                                        <a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=detail&do=shop&m=sz_yi&id=13059" title="【肥西生态鸡_初生蛋40枚】孕妇宝宝专吃 初产蛋土鸡蛋头窝开窝蛋">【肥西生态鸡_初生蛋40枚】孕妇宝宝专吃初产蛋土鸡蛋头窝开窝蛋</a>
+                                                                                </b>
+								</div>
+								<p class="price-attente">
+									<span class="price">￥49.88元</span>
+									<span class="attente" title="库存">库存:49853</span>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--商品推荐-->
+		<div id="category_recommend"></div>
+		<script id="tpl_category_recommend" type="text/html">
+			<%each category as value%>
+			<div class="tab_goods_warp" style="margin-bottom:20px;">
+				<div class="tab_left">
+					<div class="tab_title"><span><%value.name%></span></div>
+					<a href="<%value.advurl_pc%>"><img src="<%value.advimg_pc%>" /></a>
+					<div class="tab-third-warp">
+						<%each value.third as t%>
+						<a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=list&do=shop&m=sz_yi&tcate=<%t.id%>">
+							<%t.name%>
+						</a>
+						<%/each%>
+					</div>
+				</div>
+				<div class="tab_goods">
+					<ul class="tab_menu">
+						<%each value.children as value1%>
+						<li class="tab_li" data-cid="<%value1.id%>" data-id="<%value.id%>">
+							<a href="javascript:;">
+								<%value1.name%>
+							</a>
+						</li>
+						<%/each%>
+						<a class="more" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=list&do=shop&m=sz_yi&pcate=<%value.id%>">更多 <span>></span></a>
+					</ul>
+					<div class="tab_box<%value.id%>">
+						<div class="goods_tab_list" style="display:block;">
+							<ul class="items" style="margin:0">
+								<%each value.goods as g%>
+								<li class="items-li">
+									<a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=detail&do=shop&m=sz_yi&id=<%g.id%>" style="position:relative;">
+										<img src="<%g.thumb%>" title="">
+									</a>
+									<div class="wrap_div">
+										<b class="title">
+                                                                                        <a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=detail&do=shop&m=sz_yi&id=<%g.id%>" title="<%g.thumb%>"><%g.title%></a>
+                                                                                </b>
+									</div>
+									<p class="price-attente">
+										<span class="price">￥<%g.marketprice%> 元</span>
+										<span class="attente" title="销量">销量:<%g.sales%></span>
+									</p>
+								</li>
+								<%/each%>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<%/each%>
+		</script>
+
+		<script id="tpl_children_list" type="text/html">
+			<div class="goods_tab_list" style="display:block;">
+				<ul class="items" style="margin:0">
+					<%each goods as g%>
+					<li class="items-li">
+						<a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=detail&do=shop&m=sz_yi&id=<%g.id%>" style="position:relative;"><img src="<%g.thumb%>" title=""></a>
+						<div class="wrap_div">
+							<b class="title"><a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=detail&do=shop&m=sz_yi&id=<%g.id%>" title="<%g.thumb%>"><%g.title%></a></b>
+						</div>
+						<p class="price-attente"> <span class="price">￥<%g.marketprice%>元</span> <span class="attente" title="销量">销量:<%g.sales%></span> </p>
+					</li>
+					<%/each%>
+				</ul>
+			</div>
+		</script>
+
+		<script id="tpl_third_list" type="text/html"></script>
+
+		<script src="../addons/sz_yi/static/js/jquery.easing.1.3.js"></script>
+		<script src="../addons/sz_yi/static/js/Animation.js"></script>
+		<script>
+			//插件点击隐藏或者展示按钮
+			$(".j-cover-page-plug-in div").bind("mouseenter mouseleave", function(e) {
+				if(e.type == "mouseenter") {
+					$(this).find(".btn").show();
+				} else {
+					$(this).find(".btn").hide();
+				}
+			});
+			// 商品动画
+			var move = function(wrap, cname) {
+				$("." + wrap).each(function() {
+					var obj = $(this).find("." + cname);
+					var p = obj.find("p");
+					$(this).hover(function() {
+						p.stop().animate({
+							height: 20
+						}, 200);
+						$(this).addClass("active");
+					}, function() {
+						p.stop().animate({
+							height: 0
+						}, 200);
+						$(this).removeClass("active");
+					});
+				});
+			}
+
+			move("j-items-li", "wrap_div");
+
+			// 插件动画
+			var run = function() {
+				var obj = $(".j-cover-page-plug-in");
+				obj.addClass("clearfix");
+				obj.find(".fl").css("height", 260);
+				obj.find("img").css({
+					position: "absolute",
+					left: 0,
+					top: 0
+				});
+				obj.find("img").hover(function() {
+					// $(this).stop().animate({
+					//     left: '-10px'
+					// },200);
+				}, function() {
+					$(this).stop().animate({
+						left: 0
+					}, 200);
+				});
+			}
+
+			run();
+
+			require(['jquery', 'jquery.touchslider', 'swipe'], function($) {
+				new Swipe($('#banner')[0], {
+					speed: 300,
+					auto: 4000,
+					callback: function() {
+						$(".flicking_con  .inner  a").removeClass("on").eq(this.index).addClass("on");
+					}
+				});
+			});
+
+			require(['tpl', 'core'], function(tpl, core) {
+				core.json('shop', {
+					op: 'category_recommend'
+				}, function(json) {
+					//console.log(JSON.stringify(json));
+					var category = json.result;
+					if(json.status == 1) {
+						$('#category_recommend').html(tpl('tpl_category_recommend', category));
+						$('.tab_goods_warp').each(function() {
+							var e = $(this).find('.tab_menu li:first');
+							var cid = e.data('cid');
+							var id = e.data('id');
+							e.addClass('selected').siblings().removeClass('selected');
+							setgood(cid, id);
+						})
+					}
+				}, true);
+
+				$(document).on('mouseover', '.tab_li', function() {
+					$(this).addClass('selected').siblings().removeClass('selected');
+					// var index = $(this).index(this);
+					// $('div.tab_box > div').eq(index).show().siblings().hide();
+					var cid = $(this).data('cid');
+					var id = $(this).data('id');
+					setgood(cid, id);
+				});
+
+				function setgood(cid, id) {
+					core.json('shop', {
+						op: 'children_goods',
+						id: cid
+					}, function(json) {
+						var goods = json.result;
+						var third = json.result;
+						if(json.status == 1) {
+
+							$('.tab_box' + id).html(tpl('tpl_children_list', goods));
+
+							$('.tab_third' + id).html(tpl('tpl_third_list', third));
+						}
+					}, true)
+				}
+			});
+		</script>
+		<script type="text/javascript">
+			var showId = 0;
+			var inter = null;
+
+			$(function() {
+				$('.banner_c').mouseover(function() {
+					$('.lbtn').show();
+					$('.rbtn').show();
+				}).mouseout(function() {
+					$('.lbtn').hide();
+					$('.rbtn').hide();
+				})
+
+				$('.bner_u').on('mouseover', 'li', function() {
+					clearInterval(inter);
+					showId = $(this).attr('cid');
+
+					$('.bnr_s li').css('display', 'none');
+					$('.bnr_s li').eq(showId).css({
+						'display': 'list-item',
+						'opacity': 0.8
+					});
+					$('.bnr_s li').eq(showId).animate({
+						'opacity': 1
+					}, 800);
+
+					$('.bner_u').find('li').removeClass('lion');
+					$(this).addClass('lion');
+				}).on('mouseout', 'li', function() {
+					circulation();
+				});
+
+				$('.lbtn').on('click', function() {
+					clickLeft();
+				})
+
+				$('.rbtn').on('click', function() {
+					clickRight();
+				})
+
+				circulation();
+			})
+
+			function circulation() {
+				inter = setInterval(function() {
+					switchAd('right');
+				}, 5000);
+			}
+
+			function clickLeft() {
+				clearInterval(inter);
+				switchAd('left');
+				circulation();
+			}
+
+			function clickRight() {
+				clearInterval(inter);
+				switchAd('right');
+				circulation();
+			}
+
+			function switchAd(type) {
+				var e = $('.bner_u').find('b');
+				var len = $('.bnr_s li').length;
+
+				$('.bner_u li').removeClass('lion');
+				$('.bnr_s li').css('display', 'none');
+
+				if(type == 'left') {
+					showId--;
+					if(showId < 0) {
+						showId = (len - 1);
+					}
+				} else if(type == 'right') {
+					showId++;
+					if(showId == len) {
+						showId = 0;
+					}
+				}
+
+				$('.bnr_s li').eq(showId).css({
+					'display': 'list-item',
+					'opacity': 0.8
+				});
+				$('.bnr_s li').eq(showId).animate({
+					'opacity': 1
+				}, 800);
+
+				var p = e.eq(showId).parents('li');
+				p.addClass('lion');
+			}
+		</script>
+		<script language='javascript'>
+			var category = null;
+			require(['tpl', 'core'], function(tpl, core) {
+				core.json('shop/notice', {}, function(json) {
+					//console.log(JSON.stringify(json));
+					var category = json.result;
+					var list = category;
+
+					$.each(category.list, function(i, v) {
+						var data = v;
+						if(v.title.length > 10) {
+							data.title_d = v.title.substr(0, 9) + '...';
+						} else {
+							data.title_d = v.title;
+						}
+						list.list[i] = data;
+					})
+					if(list.list.length > 5) {
+						list.list.splice(5, list.list.length - 1);
+					}
+					$('.newslst').html(tpl('tpl_notice_list', list));
+				}, true);
+			});
+		</script>
+		<!-- foot -->
+		<link rel="stylesheet" type="text/css" href="../addons/sz_yi/template/pc/default/static/css/footer.css">
+		<div class="cover-page-foot fl wfs">
+			<p class="subnav">
+				<a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=index&do=shop&m=sz_yi">首 页</a>
+				<a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=list&order=sales&by=desc&do=shop&m=sz_yi">全部商品</a>
+				<a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&p=notice&do=shop&m=sz_yi">店铺公告</a>
+				<a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&method=register&p=commission&m=sz_yi&do=plugin">成为事业伙伴</a>
+				<a target="_blank" href="http://fx.dameiz.com/app/index.php?i=2&c=entry&do=order&m=sz_yi">会员中心</a>
+			</p>
+			<p class="copyright">
+				<p><span style="font-size: 12px;">ICP备案证书号:赣14002601号-1 电信业务经营许可证 赣 B2-20140018<br/></span></p>
+				<p><span style="font-size: 12px;">© 2005-2017 大美网 版权所有，并保留所有权利。 江西省南昌市西湖区会堂 侧路67号大美电子商务创业园 Tel: 0791-86264176 E-mail: 2941683497@qq.com</span></p>
+				<p><br/></p>
+			</p>
+		</div>
+		<div style="display:none;">
+		</div>
+		<script id='tpl_show_message' type='text/html'>
+			<div class="sweet-alert" style="display:block;">
+				<%if type=='error'%>
+				<div class="icon error animateErrorIcon" style="display: block;"><span class="x-mark animateXMark"><span class="line left"></span><span class="line right"></span></span>
+				</div>
+				<%/if%>
+				<%if type=='warning'%>
+				<div class="icon warning pulseWarning" style="display: block;"><span class="body pulseWarningIns"></span><span class="dot pulseWarningIns"></span></div>
+				<%/if%>
+				<%if type=='success'%>
+				<div class="icon success animate" style="display: block;"><span class="line tip animateSuccessTip"></span><span class="line long animateSuccessLong"></span>
+					<div class="placeholder"></div>
+					<div class="fix"></div>
+				</div>
+				<%/if%>
+				<div class="info">
+					<%message%>
+					<%if url%><br><span>如果您的浏览器没有自动跳转请点击此处</span>
+					<%/if%>
+				</div>
+
+				<div class="sub" <%if url%>
+					onclick="location.href='
+					<%url%>'"
+					<%else%>
+					<%if js%> onclick="
+					<%js%>"
+					<%else%> onclick="history.back()"
+					<%/if%>
+					<%/if%> >
+					<%if type=='success'%>
+					<div class="green">确认</div>
+					<%/if%>
+					<%if type=='warning'%>
+					<div class="grey">确认</div>
+					<%/if%>
+					<%if type=='error'%>
+					<div class="red">确认</div>
+					<%/if%>
+				</div>
+		</script>
+		</body>
+
+</html>
