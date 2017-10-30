@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body, html{
+				height: 100%;
+				width: 100%;
+			}
+			img{
+				display: block;
+				width: 100px;
+				height:100%;
+			}
+			.box{
+				width: 100%;
+				margin-top: 100px;
+				height: 70px;
+			}
+			.box>ul{
+				overflow: hidden;
+				height: 70px;
+			}
+			li{
+				list-style: none;
+				float: left;
+				width: 100px;
+				height:100%;
+			}
+			li
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul class="boxUl">
+				<li><img src="image/1.jpg" alt="" /></li>
+				<li><img src="image/2.jpg" alt="" /></li>
+				<li><img src="image/3.jpg" alt="" /></li>
+				<li><img src="image/4.jpg" alt="" /></li>
+				<li><img src="image/5.jpg" alt="" /></li>
+				<li><img src="image/6.jpg" alt="" /></li>
+				<li><img src="image/7.jpg" alt="" /></li>
+				<li><img src="image/8.jpg" alt="" /></li>
+				<li><img src="image/9.jpg" alt="" /></li>
+				<li><img src="image/10.jpg" alt="" /></li>
+				<li><img src="image/11.jpg" alt="" /></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var oUl = document.getElementsByClassName('boxUl')[0];
+			var oLi = document.getElementsByTagName('li');
+			var oLiLenght = oLi.length;
+			var tX=0,tY=0;
+			var w=0;
+			for(let i = 0;i<oLiLenght;i++){
+				w+=getStyle(oLi[i],'width').replace(/px/,'')-0;
+			}
+			oUl.style.width = w + 'px';
+			oUl.addEventListener('touchstart',function(e){
+				var e = e || window.event;
+				tX = e.touches[0].pageX;
+				tY = e.touches[0].pageY;
+			},false);
+			oUl.addEventListener('touchmove',function(e){
+				var e = e || window.event;
+				e.preventDefault(); 
+				//console.log(e);
+				//console.log(e.touches[0].pageX-tX)
+				oUl.style.transform="translateX("+e.touches[0].pageX-tX+" px)";
+			},false)
+			//获取元数样式
+			function getStyle(obj,attr){
+			    return (obj.currentStyle)?obj.currentStyle[attr]:window.getComputedStyle(obj,null)[attr];
+			}
+		</script>
+	</body>
+</html>
