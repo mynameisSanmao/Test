@@ -56,9 +56,9 @@
 			var oUl = document.getElementsByClassName('boxUl')[0];
 			var oLi = document.getElementsByTagName('li');
 			var oLiLenght = oLi.length;
-			var tX=0,tY=0;
-			var w=0;
-			var move=0;
+			var tX=0,tY=0;//起始坐标
+			var w=0;//宽度
+			var move=0;//移动的位置
 			for(let i = 0;i<oLiLenght;i++){
 				w+=getStyle(oLi[i],'width').replace(/px/,'')-0;
 			}
@@ -73,24 +73,30 @@
 					var ev = evn || window.event;
 					ev.preventDefault();
 					console.log('移动中的位置')
-
-					console.log(ev.touches[0].pageX)
-					move = ev.touches[0].pageX-tX;
-					oUl.style.transform = "translateX("+move+"px)";
+//					console.log(ev.touches[0].pageX)
+					move += ev.touches[0].pageX-tX;
 					
-					
-					console.log('移动后的位置')
-					console.log(tX)
+					console.log(move)
 				},false)
 			},false);
 			oUl.addEventListener('touchend',function(evn){
 				var evn = evn || window.event;
 				console.log(evn)
-				tX = move;
-				tY = 0;
-				console.log('松开')
+				oUl.style.transform = "translateX("+move+"px)";
 				oUl.style.transition = 'all 1s';
+				tX = evn.changedTouches[0].pageX;
+				tY = evn.changedTouches[0].pageY;
+				console.log('移动后的位置')
+				console.log(tX)
+				console.log('松开')
+				
 			},false);
+			
+			
+			
+			
+			
+			
 			// function start(event){
 			// 	var e = event || window.event;
 			// 	tX = e.touches[0].pageX;
